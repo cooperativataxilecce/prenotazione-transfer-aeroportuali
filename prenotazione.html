@@ -18,66 +18,49 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-
 background:#f5f5f5;
 display:flex;
 justify-content:center;
 align-items:center;
 padding:40px;
-
 }
 
 .container{
-
 background:white;
 max-width:650px;
 width:100%;
 padding:35px;
 border-radius:18px;
 box-shadow:0 10px 30px rgba(0,0,0,.15);
-
 }
 
-
 .logo{
-
 display:block;
 margin:auto;
 width:180px;
 margin-bottom:20px;
-
 }
 
-
 h2{
-
 text-align:center;
 color:#111;
 margin-bottom:10px;
-
 }
 
-
 .info{
-
 text-align:center;
 font-size:13px;
 color:#666;
 line-height:1.5;
 margin-bottom:25px;
-
 }
 
-
 label{
-
 font-weight:bold;
 display:block;
 margin-top:18px;
 margin-bottom:6px;
-
 }
-
 
 input, textarea{
 
@@ -89,24 +72,17 @@ font-size:15px;
 
 }
 
-
 textarea{
-
 height:120px;
 resize:vertical;
-
 }
-
 
 .volo-info{
-
 font-size:12px;
 color:#777;
-margin-top:6px;
+margin-top:5px;
 line-height:1.5;
-
 }
-
 
 .privacy{
 
@@ -119,29 +95,18 @@ color:#555;
 
 }
 
-
 .privacy input{
-
 width:auto;
-
 }
-
 
 .privacy label{
-
-font-weight:normal;
 margin:0;
-
+font-weight:normal;
 }
-
 
 .privacy a{
-
 color:#f39c12;
-text-decoration:none;
-
 }
-
 
 button{
 
@@ -158,13 +123,9 @@ cursor:pointer;
 
 }
 
-
 button:hover{
-
 background:#d87f00;
-
 }
-
 
 </style>
 
@@ -191,7 +152,6 @@ La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
 
 
 <form id="form">
-
 
 
 <label>
@@ -281,7 +241,7 @@ Note extra (facoltativo)
 
 <input type="checkbox" id="privacy" required>
 
-<label for="privacy">
+<label>
 
 Dichiaro di aver letto e accettato
 
@@ -312,20 +272,18 @@ Invia richiesta su WhatsApp
 <script>
 
 
-let parametri = new URLSearchParams(window.location.search);
+const parametri = new URLSearchParams(window.location.search);
 
 
-let tipo = parametri.get("tipo");
+const tipo = parametri.get("tipo");
 
-let aeroporto = parametri.get("aeroporto");
+const aeroporto = parametri.get("aeroporto");
 
 
 
 if(tipo === "verso"){
 
-
 document.getElementById("arrivo").value = aeroporto;
-
 
 }
 
@@ -333,19 +291,16 @@ document.getElementById("arrivo").value = aeroporto;
 
 if(tipo === "da"){
 
-
 document.getElementById("partenza").value = aeroporto;
 
 document.getElementById("voloBox").style.display = "block";
-
 
 }
 
 
 
 
-
-document.getElementById("form").addEventListener("submit",function(e){
+document.getElementById("form").addEventListener("submit", function(e){
 
 
 e.preventDefault();
@@ -367,39 +322,38 @@ let messaggio =
 `Richiesta Transfer Aeroportuale
 
 Nome:
-${document.getElementById("nome").value}
+${nome.value}
 
 Telefono:
-${document.getElementById("telefono").value}
+${telefono.value}
 
 Partenza:
-${document.getElementById("partenza").value}
+${partenza.value}
 
 Arrivo:
-${document.getElementById("arrivo").value}
+${arrivo.value}
 
 Numero volo:
-${document.getElementById("volo").value || "Non indicato"}
+${volo.value || "Non indicato"}
 
 Orario:
-${document.getElementById("ora").value}
+${ora.value}
 
 Data:
-${document.getElementById("data").value}
+${data.value}
 
 Numero passeggeri:
-${document.getElementById("passeggeri").value}
+${passeggeri.value}
 
 Note:
-${document.getElementById("note").value || "Nessuna"}
+${note.value || "Nessuna"}
 
 Il cliente ha accettato l'informativa sulla privacy.`;
 
 
-let url = 
-"https://wa.me/393286714428?text=" 
+let url =
+"https://wa.me/393286714428?text="
 + encodeURIComponent(messaggio);
-
 
 
 window.open(url,"_blank");
