@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prenotazione Transfer | Cooperativa Taxi Lecce</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+background:#f5f5f5;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px;
+
+}
+
+
+.container{
+
+background:white;
+max-width:650px;
+width:100%;
+padding:35px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+
+.logo{
+
+display:block;
+margin:auto;
+width:180px;
+margin-bottom:20px;
+
+}
+
+
+h2{
+
+text-align:center;
+color:#111;
+margin-bottom:10px;
+
+}
+
+
+.info{
+
+text-align:center;
+font-size:13px;
+color:#666;
+margin-bottom:25px;
+line-height:1.5;
+
+}
+
+
+label{
+
+font-weight:bold;
+display:block;
+margin-top:18px;
+margin-bottom:6px;
+
+}
+
+
+input, textarea{
+
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+
+}
+
+
+textarea{
+
+height:120px;
+resize:vertical;
+
+}
+
+
+.volo-info{
+
+font-size:12px;
+color:#777;
+margin-top:5px;
+line-height:1.4;
+
+}
+
+
+.privacy{
+
+margin-top:25px;
+display:flex;
+gap:8px;
+align-items:center;
+font-size:14px;
+color:#555;
+
+}
+
+
+.privacy input{
+
+width:auto;
+
+}
+
+
+.privacy label{
+
+font-weight:normal;
+margin:0;
+
+}
+
+
+.privacy a{
+
+color:#f39c12;
+
+}
+
+
+button{
+
+width:100%;
+margin-top:30px;
+padding:16px;
+background:#f39c12;
+border:none;
+color:white;
+font-size:18px;
+font-weight:bold;
+border-radius:12px;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#d87f00;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<img src="logo.png" class="logo">
+
+
+<h2>Richiesta Transfer Aeroportuale</h2>
+
+
+<p class="info">
+Completa i dati per richiedere il tuo servizio transfer.
+La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
+</p>
+
+
+
+<form id="form">
+
+
+
+<label>
+Indirizzo di partenza
+</label>
+
+<input type="text" id="partenza">
+
+
+
+<label>
+Indirizzo di arrivo
+</label>
+
+<input type="text" id="arrivo">
+
+
+
+<div id="voloBox" style="display:none;">
+
+
+<label>
+Numero del volo (facoltativo)
+</label>
+
+<input type="text" id="volo">
+
+
+<p class="volo-info">
+Consigliamo di indicare il numero del volo per consentirci di monitorare l'arrivo e garantire un servizio efficiente e puntuale.
+</p>
+
+
+</div>
+
+
+
+
+<label>
+Nome e Cognome
+</label>
+
+<input type="text" id="nome" required>
+
+
+
+
+<label>
+Numero di telefono
+</label>
+
+<input type="tel" id="telefono" required>
+
+
+
+
+<label>
+Data
+</label>
+
+<input type="date" id="data" required>
+
+
+
+
+<label>
+Orario
+</label>
+
+<input type="time" id="ora" required>
+
+
+
+
+<label>
+Numero passeggeri
+</label>
+
+<input type="number" id="passeggeri" min="1" required>
+
+
+
+
+<label>
+Note extra (facoltativo)
+</label>
+
+<textarea id="note"></textarea>
+
+
+
+
+<div class="privacy">
+
+
+<input type="checkbox" id="privacy" required>
+
+
+<label>
+
+Dichiaro di aver letto e accettato
+
+<a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy" target="_blank">
+l'informativa sulla privacy
+</a>
+
+</label>
+
+
+</div>
+
+
+
+
+<button type="submit">
+Invia richiesta su WhatsApp
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+<script>
+
+
+let parametri=new URLSearchParams(window.location.search);
+
+
+let tipo=parametri.get("tipo");
+
+let aeroporto=parametri.get("aeroporto");
+
+
+
+if(tipo=="verso"){
+
+
+document.getElementById("arrivo").value=aeroporto;
+
+
+}
+
+
+if(tipo=="da"){
+
+
+document.getElementById("partenza").value=aeroporto;
+
+
+document.getElementById("voloBox").style.display="block";
+
+
+}
+
+
+
+
+document.getElementById("form").addEventListener("submit",function(e){
+
+
+e.preventDefault();
+
+
+
+if(!document.getElementById("privacy").checked){
+
+alert("Devi accettare l'informativa sulla privacy.");
+
+return;
+
+}
+
+
+
+
+let messaggio=
+
+`Richiesta Transfer Aeroportuale
+
+Partenza:
+${document.getElementById("partenza").value}
+
+Arrivo:
+${document.getElementById("arrivo").value}
+
+Numero volo:
+${document.getElementById("volo").value || "Non indicato"}
+
+Nome:
+${document.getElementById("nome").value}
+
+Telefono:
+${document.getElementById("telefono").value}
+
+Data:
+${document.getElementById("data").value}
+
+Orario:
+${document.getElementById("ora").value}
+
+Numero passeggeri:
+${document.getElementById("passeggeri").value}
+
+Note:
+${document.getElementById("note").value || "Nessuna"}
+
+Il cliente ha accettato l'informativa sulla privacy.`;
+
+
+
+let url=
+"https://wa.me/393286714428?text="
++encodeURIComponent(messaggio);
+
+
+
+window.open(url,"_blank");
+
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
