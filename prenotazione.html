@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prenotazione Transfer | Cooperativa Taxi Lecce</title>
+<title>Richiesta Transfer | Cooperativa Taxi Lecce</title>
 
 <style>
 
@@ -26,7 +26,6 @@ align-items:center;
 padding:40px;
 
 }
-
 
 .container{
 
@@ -64,8 +63,8 @@ margin-bottom:10px;
 text-align:center;
 font-size:13px;
 color:#666;
-margin-bottom:25px;
 line-height:1.5;
+margin-bottom:25px;
 
 }
 
@@ -103,8 +102,8 @@ resize:vertical;
 
 font-size:12px;
 color:#777;
-margin-top:5px;
-line-height:1.4;
+margin-top:6px;
+line-height:1.5;
 
 }
 
@@ -113,8 +112,8 @@ line-height:1.4;
 
 margin-top:25px;
 display:flex;
-gap:8px;
 align-items:center;
+gap:8px;
 font-size:14px;
 color:#555;
 
@@ -139,6 +138,7 @@ margin:0;
 .privacy a{
 
 color:#f39c12;
+text-decoration:none;
 
 }
 
@@ -165,6 +165,7 @@ background:#d87f00;
 
 }
 
+
 </style>
 
 </head>
@@ -183,7 +184,7 @@ background:#d87f00;
 
 
 <p class="info">
-Completa i dati per richiedere il tuo servizio transfer.
+Completa i dati per richiedere il tuo transfer.
 La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
 </p>
 
@@ -194,10 +195,26 @@ La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
 
 
 <label>
+Nome e Cognome
+</label>
+
+<input type="text" id="nome" required>
+
+
+
+<label>
+Numero di telefono
+</label>
+
+<input type="tel" id="telefono" required>
+
+
+
+<label>
 Indirizzo di partenza
 </label>
 
-<input type="text" id="partenza">
+<input type="text" id="partenza" required>
 
 
 
@@ -205,7 +222,7 @@ Indirizzo di partenza
 Indirizzo di arrivo
 </label>
 
-<input type="text" id="arrivo">
+<input type="text" id="arrivo" required>
 
 
 
@@ -228,22 +245,11 @@ Consigliamo di indicare il numero del volo per consentirci di monitorare l'arriv
 
 
 
-
 <label>
-Nome e Cognome
+Orario
 </label>
 
-<input type="text" id="nome" required>
-
-
-
-
-<label>
-Numero di telefono
-</label>
-
-<input type="tel" id="telefono" required>
-
+<input type="time" id="ora" required>
 
 
 
@@ -255,22 +261,11 @@ Data
 
 
 
-
-<label>
-Orario
-</label>
-
-<input type="time" id="ora" required>
-
-
-
-
 <label>
 Numero passeggeri
 </label>
 
 <input type="number" id="passeggeri" min="1" required>
-
 
 
 
@@ -282,14 +277,11 @@ Note extra (facoltativo)
 
 
 
-
 <div class="privacy">
-
 
 <input type="checkbox" id="privacy" required>
 
-
-<label>
+<label for="privacy">
 
 Dichiaro di aver letto e accettato
 
@@ -299,9 +291,7 @@ l'informativa sulla privacy
 
 </label>
 
-
 </div>
-
 
 
 
@@ -322,34 +312,35 @@ Invia richiesta su WhatsApp
 <script>
 
 
-let parametri=new URLSearchParams(window.location.search);
+let parametri = new URLSearchParams(window.location.search);
 
 
-let tipo=parametri.get("tipo");
+let tipo = parametri.get("tipo");
 
-let aeroporto=parametri.get("aeroporto");
-
-
-
-if(tipo=="verso"){
+let aeroporto = parametri.get("aeroporto");
 
 
-document.getElementById("arrivo").value=aeroporto;
+
+if(tipo === "verso"){
+
+
+document.getElementById("arrivo").value = aeroporto;
+
+
+}
+
+
+
+if(tipo === "da"){
+
+
+document.getElementById("partenza").value = aeroporto;
+
+document.getElementById("voloBox").style.display = "block";
 
 
 }
 
-
-if(tipo=="da"){
-
-
-document.getElementById("partenza").value=aeroporto;
-
-
-document.getElementById("voloBox").style.display="block";
-
-
-}
 
 
 
@@ -363,7 +354,7 @@ e.preventDefault();
 
 if(!document.getElementById("privacy").checked){
 
-alert("Devi accettare l'informativa sulla privacy.");
+alert("Devi accettare l'informativa sulla privacy per procedere.");
 
 return;
 
@@ -371,10 +362,15 @@ return;
 
 
 
-
-let messaggio=
+let messaggio =
 
 `Richiesta Transfer Aeroportuale
+
+Nome:
+${document.getElementById("nome").value}
+
+Telefono:
+${document.getElementById("telefono").value}
 
 Partenza:
 ${document.getElementById("partenza").value}
@@ -385,17 +381,11 @@ ${document.getElementById("arrivo").value}
 Numero volo:
 ${document.getElementById("volo").value || "Non indicato"}
 
-Nome:
-${document.getElementById("nome").value}
-
-Telefono:
-${document.getElementById("telefono").value}
+Orario:
+${document.getElementById("ora").value}
 
 Data:
 ${document.getElementById("data").value}
-
-Orario:
-${document.getElementById("ora").value}
 
 Numero passeggeri:
 ${document.getElementById("passeggeri").value}
@@ -406,15 +396,13 @@ ${document.getElementById("note").value || "Nessuna"}
 Il cliente ha accettato l'informativa sulla privacy.`;
 
 
-
-let url=
-"https://wa.me/393286714428?text="
-+encodeURIComponent(messaggio);
+let url = 
+"https://wa.me/393286714428?text=" 
++ encodeURIComponent(messaggio);
 
 
 
 window.open(url,"_blank");
-
 
 
 });
