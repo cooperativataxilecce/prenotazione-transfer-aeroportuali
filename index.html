@@ -28,25 +28,28 @@ padding:40px;
 
 }
 
+
 .container{
 
-background:#fff;
-width:100%;
+background:white;
 max-width:650px;
+width:100%;
 padding:35px;
 border-radius:18px;
 box-shadow:0 10px 30px rgba(0,0,0,.15);
 
 }
 
+
 .logo{
 
 display:block;
 margin:auto;
 width:180px;
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
+
 
 h2{
 
@@ -56,35 +59,39 @@ margin-bottom:10px;
 
 }
 
-p{
+
+.info{
 
 text-align:center;
-color:#666;
 font-size:14px;
-line-height:1.6;
+color:#666;
+line-height:1.5;
 margin-bottom:30px;
 
 }
+
 
 label{
 
 display:block;
 font-weight:bold;
-margin-bottom:8px;
 margin-top:20px;
+margin-bottom:8px;
 
 }
+
 
 select{
 
 width:100%;
 padding:14px;
-font-size:15px;
-border:1px solid #ddd;
 border-radius:10px;
-background:#fff;
+border:1px solid #ddd;
+font-size:15px;
+background:white;
 
 }
+
 
 button{
 
@@ -98,9 +105,9 @@ border-radius:12px;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
-transition:.3s;
 
 }
+
 
 button:hover{
 
@@ -112,51 +119,123 @@ background:#d87f00;
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
-<img src="logo.png" class="logo" alt="Cooperativa Taxi Lecce">
+
+<img src="logo.png" class="logo">
+
 
 <h2>Transfer Aeroportuale</h2>
 
-<p>
-Seleziona il tipo di transfer e l'aeroporto di riferimento.
+
+<p class="info">
+Scegli il tipo di transfer e l'aeroporto. 
+Ti guideremo nella richiesta del servizio.
 </p>
 
-<form>
 
-<label>Di quale servizio hai bisogno?</label>
 
-<select required>
+<label>
+Tipo di transfer
+</label>
 
-<option value="">Seleziona...</option>
 
-<option>Ho bisogno di un transfer verso l'aeroporto</option>
+<select id="tipo">
 
-<option>Ho bisogno di un transfer dall'aeroporto</option>
+<option value="">
+Seleziona...
+</option>
 
-</select>
+<option value="verso">
+Devo raggiungere l'aeroporto
+</option>
 
-<label>Aeroporto</label>
-
-<select required>
-
-<option value="">Seleziona un aeroporto...</option>
-
-<option>Aeroporto del Salento - Brindisi (BDS)</option>
-
-<option>Aeroporto Internazionale Karol Wojtyła - Bari (BRI)</option>
+<option value="da">
+Devo essere prelevato dall'aeroporto
+</option>
 
 </select>
 
-<button type="submit">
+
+
+
+<label>
+Aeroporto
+</label>
+
+
+<select id="aeroporto">
+
+
+<option value="">
+Seleziona aeroporto...
+</option>
+
+
+<option value="Aeroporto del Salento - Brindisi (BDS)">
+Aeroporto di Brindisi
+</option>
+
+
+<option value="Aeroporto Internazionale di Bari (BRI)">
+Aeroporto di Bari
+</option>
+
+
+</select>
+
+
+
+<button onclick="continua()">
 Continua
 </button>
 
-</form>
+
 
 </div>
+
+
+
+
+<script>
+
+
+function continua(){
+
+
+let tipo=document.getElementById("tipo").value;
+
+let aeroporto=document.getElementById("aeroporto").value;
+
+
+
+if(tipo=="" || aeroporto==""){
+
+alert("Seleziona il tipo di transfer e l'aeroporto.");
+
+return;
+
+}
+
+
+
+window.location.href=
+"prenotazione.html?tipo="
++tipo+
+"&aeroporto="
++encodeURIComponent(aeroporto);
+
+
+
+}
+
+
+</script>
+
 
 </body>
 
