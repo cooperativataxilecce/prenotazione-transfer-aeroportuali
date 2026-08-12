@@ -322,7 +322,7 @@ return;
 }
 
 
-
+let dataFormattata = data.value.split("-").reverse().join("/");
 let messaggio =
 
 `Richiesta Transfer Aeroportuale
@@ -346,7 +346,7 @@ Orario:
 ${ora.value}
 
 Data:
-${data.value}
+${dataFormattata}
 
 Numero passeggeri:
 ${passeggeri.value}
