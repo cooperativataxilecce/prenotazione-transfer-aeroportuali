@@ -111,6 +111,26 @@ font-weight:normal;
 color:#f39c12;
 }
 
+.payment-info{
+
+margin-top:25px;
+padding:15px;
+background:#f8f8f8;
+border-radius:10px;
+font-size:14px;
+color:#555;
+line-height:1.5;
+
+}
+
+.payment-info strong{
+
+display:block;
+color:#111;
+margin-bottom:8px;
+
+}
+  
 button{
 
 width:100%;
@@ -243,6 +263,22 @@ Note extra (facoltativo) / Additional notes (optional)
 
 
 
+
+<div class="payment-info">
+
+<strong>Pagamento anticipato</strong>
+
+<p>
+Per i transfer aeroportuali o altri servizi per i quali sia richiesto un particolare impegno organizzativo, la Cooperativa Taxi Lecce può richiedere il pagamento anticipato tramite link SumUp.
+In tali casi, la prenotazione sarà confermata esclusivamente dopo la ricezione del pagamento.
+</p>
+
+</div>
+
+
+
+
+
 <div class="privacy">
 
 <input type="checkbox" id="privacy" required>
@@ -253,6 +289,12 @@ Dichiaro di aver letto e accettato
 
 <a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy" target="_blank">
 l'informativa sulla privacy
+</a>
+
+e i
+
+<a href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni" target="_blank">
+Termini e Condizioni
 </a>
 
 </label>
@@ -315,7 +357,7 @@ e.preventDefault();
 
 if(!document.getElementById("privacy").checked){
 
-alert("Devi accettare l'informativa sulla privacy per procedere.");
+alert("Devi accettare l'informativa sulla privacy e i Termini e Condizioni per procedere.");
 
 return;
 
@@ -354,7 +396,8 @@ ${passeggeri.value}
 Note:
 ${note.value || "Nessuna"}
 
-Il cliente ha accettato l'informativa sulla privacy.`;
+Il cliente ha accettato l'informativa sulla privacy e i Termini e Condizioni.
+La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce.`;
 
 
 let url =
