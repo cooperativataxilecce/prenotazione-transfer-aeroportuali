@@ -2,243 +2,273 @@
 <html lang="it">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Transfer Aeroportuale | Cooperativa Taxi Lecce</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-
-background:#f5f5f5;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:40px;
-
+body {
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 25px;
 }
 
-
-.container{
-
-background:white;
-max-width:650px;
-width:100%;
-padding:35px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
+.container {
+    position: relative;
+    background: white;
+    max-width: 650px;
+    width: 100%;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
 
-.logo{
-
-display:block;
-margin:auto;
-width:400px;
-max-width:100%;
-margin-bottom:25px;
-
+.logo {
+    display: block;
+    margin: 10px auto 25px;
+    width: 400px;
+    max-width: 100%;
 }
 
-
-h2{
-
-text-align:center;
-color:#111;
-margin-bottom:10px;
-
+.lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-bottom: 18px;
 }
 
-
-.info{
-
-text-align:center;
-font-size:14px;
-color:#666;
-line-height:1.5;
-margin-bottom:30px;
-
+.lang-switch button {
+    width: auto;
+    margin: 0;
+    padding: 8px 12px;
+    background: #fff;
+    color: #444;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: pointer;
 }
 
-
-label{
-
-display:block;
-font-weight:bold;
-margin-top:20px;
-margin-bottom:8px;
-
+.lang-switch button.active {
+    background: #f39c12;
+    color: white;
+    border-color: #f39c12;
 }
 
-
-select{
-
-width:100%;
-padding:14px;
-border-radius:10px;
-border:1px solid #ddd;
-font-size:15px;
-background:white;
-
+h2 {
+    text-align: center;
+    color: #111;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
-
-button{
-
-width:100%;
-margin-top:35px;
-padding:16px;
-background:#f39c12;
-color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-
+.info {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 30px;
 }
 
-
-button:hover{
-
-background:#d87f00;
-
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 8px;
 }
 
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    background: white;
+}
+
+.continue-btn {
+    width: 100%;
+    margin-top: 35px;
+    padding: 16px;
+    background: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.continue-btn:hover {
+    background: #d87f00;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 22px;
+    }
+
+    body {
+        padding: 15px;
+    }
+}
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="container">
 
+    <div class="lang-switch" aria-label="Seleziona lingua">
+        <button type="button" data-lang="it" class="active"
+                aria-pressed="true">🇮🇹 IT</button>
 
-<img src="logo3.png" class="logo">
+        <button type="button" data-lang="en"
+                aria-pressed="false">🇬🇧 EN</button>
+    </div>
 
+    <img src="logo3.png" class="logo" alt="Cooperativa Taxi Lecce">
 
-<h2>Transfer Aeroportuale / Airport Transfer</h2>
+    <h2 data-it="Transfer Aeroportuale"
+        data-en="Airport Transfer">Transfer Aeroportuale</h2>
 
+    <p class="info"
+       data-it="Scegli il tipo di transfer e l'aeroporto. Ti guideremo nella richiesta del servizio."
+       data-en="Choose your transfer type and airport. We will guide you through the booking request.">
+       Scegli il tipo di transfer e l'aeroporto.
+       Ti guideremo nella richiesta del servizio.
+    </p>
 
-<p class="info">
-Scegli il tipo di transfer e l'aeroporto. 
-Ti guideremo nella richiesta del servizio.
-Select the transfer type and the airport. 
-We will guide you through the service request process.
-</p>
+    <label for="tipo"
+           data-it="Tipo di transfer"
+           data-en="Transfer type">Tipo di transfer</label>
 
+    <select id="tipo" required>
+        <option value=""
+                data-it="Seleziona..."
+                data-en="Select...">Seleziona...</option>
 
+        <option value="verso"
+                data-it="Devo raggiungere l'aeroporto"
+                data-en="I need to get to the airport">
+            Devo raggiungere l'aeroporto
+        </option>
 
-<label>
-Tipo di transfer / Transfer type
-</label>
+        <option value="da"
+                data-it="Devo essere prelevato dall'aeroporto"
+                data-en="I need to be picked up from the airport">
+            Devo essere prelevato dall'aeroporto
+        </option>
+    </select>
 
+    <label for="aeroporto"
+           data-it="Aeroporto"
+           data-en="Airport">Aeroporto</label>
 
-<select id="tipo">
+    <select id="aeroporto" required>
+        <option value=""
+                data-it="Seleziona aeroporto..."
+                data-en="Select airport...">Seleziona aeroporto...</option>
 
-<option value="">
-Seleziona...
-</option>
+        <option value="Aeroporto del Salento - Brindisi (BDS)"
+                data-it="Aeroporto di Brindisi"
+                data-en="Brindisi Airport">
+            Aeroporto di Brindisi
+        </option>
 
-<option value="verso">
-Devo raggiungere l'aeroporto / I need to get to the airport
-</option>
+        <option value="Aeroporto Internazionale di Bari (BRI)"
+                data-it="Aeroporto di Bari"
+                data-en="Bari Airport">
+            Aeroporto di Bari
+        </option>
+    </select>
 
-<option value="da">
-Devo essere prelevato dall'aeroporto / I need to be picked up from the airport
-</option>
-
-</select>
-
-
-
-
-<label>
-Aeroporto / Airport
-</label>
-
-
-<select id="aeroporto">
-
-
-<option value="">
-Seleziona aeroporto...
-</option>
-
-
-<option value="Aeroporto del Salento - Brindisi (BDS)">
-Aeroporto di Brindisi / Brindisi Airport
-</option>
-
-
-<option value="Aeroporto Internazionale di Bari (BRI)">
-Aeroporto di Bari / Bari Airport
-</option>
-
-
-</select>
-
-
-
-<button onclick="continua()">
-Continua / Continue
-</button>
-
-
+    <button type="button" class="continue-btn" onclick="continua()"
+            data-it="Continua"
+            data-en="Continue">Continua</button>
 
 </div>
 
-
-
-
 <script>
+function getLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const requestedLanguage = params.get("lang");
 
+    if (requestedLanguage === "it" || requestedLanguage === "en") {
+        return requestedLanguage;
+    }
 
-function continua(){
-
-
-let tipo=document.getElementById("tipo").value;
-
-let aeroporto=document.getElementById("aeroporto").value;
-
-
-
-if(tipo=="" || aeroporto==""){
-
-alert("Seleziona il tipo di transfer e l'aeroporto.");
-
-return;
-
+    return localStorage.getItem("ctl_lang") || "it";
 }
 
+function setLanguage(lang) {
+    if (lang !== "it" && lang !== "en") return;
 
+    localStorage.setItem("ctl_lang", lang);
+    document.documentElement.lang = lang;
 
-window.location.href=
-"prenotazione.html?tipo="
-+tipo+
-"&aeroporto="
-+encodeURIComponent(aeroporto);
+    document.querySelectorAll("[data-it][data-en]").forEach(element => {
+        const translation = element.getAttribute("data-" + lang);
 
+        if (translation !== null) {
+            element.textContent = translation;
+        }
+    });
 
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+        const active = button.dataset.lang === lang;
 
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+    });
+
+    document.title = lang === "en"
+        ? "Airport Transfer | Cooperativa Taxi Lecce"
+        : "Transfer Aeroportuale | Cooperativa Taxi Lecce";
 }
 
+document.querySelectorAll(".lang-switch button").forEach(button => {
+    button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+    });
+});
 
+function continua() {
+    const tipo = document.getElementById("tipo").value;
+    const aeroporto = document.getElementById("aeroporto").value;
+    const lang = localStorage.getItem("ctl_lang") || "it";
+
+    if (!tipo || !aeroporto) {
+        alert(lang === "en"
+            ? "Please select the transfer type and airport."
+            : "Seleziona il tipo di transfer e l'aeroporto.");
+
+        return;
+    }
+
+    const params = new URLSearchParams({
+        tipo: tipo,
+        aeroporto: aeroporto,
+        lang: lang
+    });
+
+    window.location.href = "prenotazione.html?" + params.toString();
+}
+
+setLanguage(getLanguage());
 </script>
 
-
 </body>
-
 </html>
