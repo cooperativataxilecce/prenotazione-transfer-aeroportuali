@@ -317,99 +317,78 @@ Prenota su WhatsApp / Book on WhatsApp
 
 
 <script>
-
-
 const parametri = new URLSearchParams(window.location.search);
 
-
 const tipo = parametri.get("tipo");
-
 const aeroporto = parametri.get("aeroporto");
 
-
-
-if(tipo === "verso"){
-
-document.getElementById("arrivo").value = aeroporto;
-
+if (tipo === "verso") {
+    document.getElementById("arrivo").value = aeroporto || "";
 }
 
-
-
-if(tipo === "da"){
-
-document.getElementById("partenza").value = aeroporto;
-
-document.getElementById("voloBox").style.display = "block";
-
+if (tipo === "da") {
+    document.getElementById("partenza").value = aeroporto || "";
+    document.getElementById("voloBox").style.display = "block";
 }
 
+document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
+    const nome = document.getElementById("nome").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const partenza = document.getElementById("partenza").value.trim();
+    const arrivo = document.getElementById("arrivo").value.trim();
+    const volo = document.getElementById("volo").value.trim();
+    const ora = document.getElementById("ora").value;
+    const data = document.getElementById("data").value;
+    const passeggeri = document.getElementById("passeggeri").value;
+    const note = document.getElementById("note").value.trim();
 
+    if (!document.getElementById("privacy").checked) {
+        alert("Devi accettare l'informativa sulla privacy e i Termini e Condizioni per procedere.");
+        return;
+    }
 
-document.getElementById("form").addEventListener("submit", function(e){
+    const dataFormattata = data.split("-").reverse().join("/");
 
+    // Messaggio WhatsApp SEMPRE in italiano
+    const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
 
-e.preventDefault();
+Nome e cognome:
+${nome}
 
+Numero di telefono:
+${telefono}
 
+Indirizzo di partenza:
+${partenza}
 
-if(!document.getElementById("privacy").checked){
+Indirizzo di arrivo:
+${arrivo}
 
-alert("Devi accettare l'informativa sulla privacy e i Termini e Condizioni per procedere.");
-
-return;
-
-}
-
-
-let dataFormattata = data.value.split("-").reverse().join("/");
-let messaggio =
-
-`Richiesta Transfer Aeroportuale
-
-Nome:
-${nome.value}
-
-Telefono:
-${telefono.value}
-
-Partenza:
-${partenza.value}
-
-Arrivo:
-${arrivo.value}
-
-Numero volo:
-${volo.value || "Non indicato"}
+Numero del volo:
+${volo || "Non indicato"}
 
 Orario:
-${ora.value}
+${ora}
 
 Data:
 ${dataFormattata}
 
 Numero passeggeri:
-${passeggeri.value}
+${passeggeri}
 
-Note:
-${note.value || "Nessuna"}
+Note aggiuntive:
+${note || "Nessuna"}
 
-Il cliente ha accettato l'informativa sulla privacy e i Termini e Condizioni.
+Il cliente ha dichiarato di aver letto e accettato l'informativa sulla privacy e i Termini e Condizioni.
+
 La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce.`;
 
+    const url = "https://wa.me/393286714428?text=" + encodeURIComponent(messaggio);
 
-let url =
-"https://wa.me/393286714428?text="
-+ encodeURIComponent(messaggio);
-
-
-window.open(url,"_blank");
-
-
+    window.open(url, "_blank");
 });
-
-
 </script>
 
 
