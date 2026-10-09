@@ -2,448 +2,662 @@
 <html lang="it">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Richiesta Transfer | Cooperativa Taxi Lecce</title>
+    <title>Richiesta Transfer | Cooperativa Taxi Lecce</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-body {
-    background: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 25px;
-}
+        body {
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 25px;
+        }
 
-.container {
-    background: white;
-    max-width: 650px;
-    width: 100%;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.15);
-}
+        .container {
+            background: white;
+            max-width: 650px;
+            width: 100%;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
 
-.logo {
-    display: block;
-    margin: 10px auto 25px;
-    width: 400px;
-    max-width: 100%;
-}
+        .logo {
+            display: block;
+            margin: 10px auto 25px;
+            width: 400px;
+            max-width: 100%;
+        }
 
-.lang-switch {
-    display: flex;
-    justify-content: flex-end;
-    gap: 6px;
-    margin-bottom: 18px;
-}
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
 
-.lang-switch button {
-    width: auto;
-    margin: 0;
-    padding: 8px 12px;
-    background: white;
-    color: #444;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: normal;
-    cursor: pointer;
-}
+        .lang-switch button {
+            width: auto;
+            margin: 0;
+            padding: 8px 12px;
+            background: white;
+            color: #444;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: normal;
+            cursor: pointer;
+        }
 
-.lang-switch button.active {
-    background: #f39c12;
-    color: white;
-    border-color: #f39c12;
-}
+        .lang-switch button.active {
+            background: #f39c12;
+            color: white;
+            border-color: #f39c12;
+        }
 
-h2 {
-    text-align: center;
-    color: #111;
-    margin-bottom: 10px;
-    line-height: 1.4;
-}
+        h2 {
+            text-align: center;
+            color: #111;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
 
-.info {
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
+        .info {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 18px;
-    margin-bottom: 6px;
-}
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
 
-input, textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 15px;
-}
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
 
-input:focus, textarea:focus, select:focus {
-    outline: 2px solid rgba(243,156,18,.3);
-    border-color: #f39c12;
-}
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid rgba(243, 156, 18, 0.3);
+            border-color: #f39c12;
+        }
 
-textarea {
-    height: 120px;
-    resize: vertical;
-}
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
 
-.volo-info {
-    font-size: 12px;
-    color: #777;
-    margin-top: 5px;
-    line-height: 1.5;
-}
+        .volo-info {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
 
-.privacy {
-    margin-top: 25px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 14px;
-    color: #555;
-}
+        .privacy {
+            margin-top: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 14px;
+            color: #555;
+        }
 
-.privacy input {
-    width: auto;
-    margin-top: 3px;
-    flex-shrink: 0;
-}
+        .privacy input {
+            width: auto;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
 
-.privacy label {
-    margin: 0;
-    font-weight: normal;
-    line-height: 1.5;
-}
+        .privacy label {
+            margin: 0;
+            font-weight: normal;
+            line-height: 1.5;
+        }
 
-.privacy a {
-    color: #d87f00;
-}
+        .privacy a {
+            color: #d87f00;
+        }
 
-.payment-info {
-    margin-top: 25px;
-    padding: 15px;
-    background: #f8f8f8;
-    border-radius: 10px;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
-}
+        .payment-info {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
 
-.payment-info strong {
-    display: block;
-    color: #111;
-    margin-bottom: 8px;
-}
+        .payment-info strong {
+            display: block;
+            color: #111;
+            margin-bottom: 8px;
+        }
 
-.submit-btn {
-    width: 100%;
-    margin-top: 30px;
-    padding: 16px;
-    background: #f39c12;
-    border: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 12px;
-    cursor: pointer;
-}
+        .submit-btn {
+            width: 100%;
+            margin-top: 30px;
+            padding: 16px;
+            background: #f39c12;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+        }
 
-.submit-btn:hover {
-    background: #d87f00;
-}
+        .submit-btn:hover {
+            background: #d87f00;
+        }
 
-@media (max-width: 480px) {
-    body {
-        padding: 15px;
-    }
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
 
-    .container {
-        padding: 22px;
-    }
-}
-</style>
+            .container {
+                padding: 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="lang-switch" aria-label="Seleziona lingua">
-        <button type="button" data-lang="it" class="active"
-                aria-pressed="true">🇮🇹 IT</button>
+        <!-- SELETTORE LINGUA -->
+        <div class="lang-switch" aria-label="Seleziona lingua">
 
-        <button type="button" data-lang="en"
-                aria-pressed="false">🇬🇧 EN</button>
-    </div>
+            <button
+                type="button"
+                data-lang="it"
+                class="active"
+                aria-pressed="true">
+                🇮🇹 IT
+            </button>
 
-    <img src="logo3.png" class="logo"
-         alt="Cooperativa Taxi Lecce">
+            <button
+                type="button"
+                data-lang="en"
+                aria-pressed="false">
+                🇬🇧 EN
+            </button>
 
-    <h2 data-it="Richiesta Transfer Aeroportuale"
-        data-en="Airport Transfer Request">
-        Richiesta Transfer Aeroportuale
-    </h2>
+        </div>
 
-    <p class="info"
-       data-it="Completa i dati per richiedere il tuo transfer. La prenotazione sarà confermata dalla Cooperativa Taxi Lecce."
-       data-en="Fill in the details to request your transfer. Your booking will be confirmed by Cooperativa Taxi Lecce.">
-        Completa i dati per richiedere il tuo transfer.
-        La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
-    </p>
+        <!-- LOGO -->
+        <img
+            src="logo3.png"
+            class="logo"
+            alt="Cooperativa Taxi Lecce">
 
-    <form id="form">
+        <!-- TITOLO -->
+        <h2
+            data-it="Richiesta Transfer Aeroportuale"
+            data-en="Airport Transfer Request">
+            Richiesta Transfer Aeroportuale
+        </h2>
 
-        <label for="nome"
-               data-it="Nome e cognome"
-               data-en="Full name">Nome e cognome</label>
+        <!-- DESCRIZIONE -->
+        <p
+            class="info"
+            data-it="Completa i dati per richiedere il tuo transfer. La prenotazione sarà confermata dalla Cooperativa Taxi Lecce."
+            data-en="Fill in the details to request your transfer. Your booking will be confirmed by Cooperativa Taxi Lecce.">
+            Completa i dati per richiedere il tuo transfer.
+            La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
+        </p>
 
-        <input type="text" id="nome" autocomplete="name" required>
+        <!-- MODULO -->
+        <form id="form">
 
-        <label for="telefono"
-               data-it="Numero di telefono"
-               data-en="Phone number">Numero di telefono</label>
-
-        <input type="tel" id="telefono"
-               autocomplete="tel" required>
-
-        <label for="partenza"
-               data-it="Indirizzo di partenza"
-               data-en="Pickup address">Indirizzo di partenza</label>
-
-        <input type="text" id="partenza"
-               autocomplete="street-address" required>
-
-        <label for="arrivo"
-               data-it="Indirizzo di arrivo"
-               data-en="Destination address">Indirizzo di arrivo</label>
-
-        <input type="text" id="arrivo" required>
-
-        <div id="voloBox" style="display:none;">
-
-            <label for="volo"
-                   data-it="Numero del volo (facoltativo)"
-                   data-en="Flight number (optional)">
-                Numero del volo (facoltativo)
+            <!-- NOME -->
+            <label
+                for="nome"
+                data-it="Nome e cognome"
+                data-en="Full name">
+                Nome e cognome
             </label>
 
-            <input type="text" id="volo">
+            <input
+                type="text"
+                id="nome"
+                autocomplete="name"
+                required>
 
-            <p class="volo-info"
-               data-it="Consigliamo di indicare il numero del volo per consentirci di monitorare l'arrivo e garantire un servizio efficiente e puntuale."
-               data-en="We recommend providing your flight number so we can monitor your arrival and provide an efficient, punctual service.">
-                Consigliamo di indicare il numero del volo per consentirci
-                di monitorare l'arrivo e garantire un servizio efficiente
-                e puntuale.
-            </p>
-
-        </div>
-
-        <label for="ora"
-               data-it="Orario"
-               data-en="Time">Orario</label>
-
-        <input type="time" id="ora" required>
-
-        <label for="data"
-               data-it="Data"
-               data-en="Date">Data</label>
-
-        <input type="date" id="data" required>
-
-        <label for="passeggeri"
-               data-it="Numero passeggeri"
-               data-en="Number of passengers">
-            Numero passeggeri
-        </label>
-
-        <input type="number" id="passeggeri"
-               min="1" step="1" required>
-
-        <label for="note"
-               data-it="Note extra (facoltativo)"
-               data-en="Additional notes (optional)">
-            Note extra (facoltativo)
-        </label>
-
-        <textarea id="note"></textarea>
-
-        <div class="payment-info">
-
-            <strong
-                data-it="Pagamento anticipato"
-                data-en="Advance payment">
-                Pagamento anticipato
-            </strong>
-
-            <p
-                data-it="Per alcune prenotazioni, a discrezione della Cooperativa Taxi Lecce, può essere richiesto il pagamento anticipato tramite link SumUp. In tali casi, la prenotazione sarà confermata esclusivamente dopo la ricezione del pagamento."
-                data-en="For some bookings, Cooperativa Taxi Lecce may require advance payment through a SumUp link at its discretion. In these cases, the booking will only be confirmed once payment has been received.">
-                Per alcune prenotazioni, a discrezione della Cooperativa
-                Taxi Lecce, può essere richiesto il pagamento anticipato
-                tramite link SumUp. In tali casi, la prenotazione sarà
-                confermata esclusivamente dopo la ricezione del pagamento.
-            </p>
-
-        </div>
-
-        <div class="privacy">
-
-            <input type="checkbox" id="privacy" required>
-
-            <label for="privacy" id="privacyLabel">
-                Dichiaro di aver letto e accettato
-                <a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy"
-                   target="_blank" rel="noopener noreferrer">
-                    l'informativa sulla privacy
-                </a>
-                e i
-                <a href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni"
-                   target="_blank" rel="noopener noreferrer">
-                    Termini e Condizioni
-                </a>.
+            <!-- TELEFONO -->
+            <label
+                for="telefono"
+                data-it="Numero di telefono"
+                data-en="Phone number">
+                Numero di telefono
             </label>
 
-        </div>
+            <input
+                type="tel"
+                id="telefono"
+                autocomplete="tel"
+                required>
 
-        <button type="submit" class="submit-btn"
+            <!-- PARTENZA -->
+            <label
+                for="partenza"
+                data-it="Indirizzo di partenza"
+                data-en="Pickup address">
+                Indirizzo di partenza
+            </label>
+
+            <input
+                type="text"
+                id="partenza"
+                autocomplete="street-address"
+                required>
+
+            <!-- ARRIVO -->
+            <label
+                for="arrivo"
+                data-it="Indirizzo di arrivo"
+                data-en="Destination address">
+                Indirizzo di arrivo
+            </label>
+
+            <input
+                type="text"
+                id="arrivo"
+                required>
+
+            <!-- NUMERO VOLO -->
+            <div id="voloBox" style="display: none;">
+
+                <label
+                    for="volo"
+                    data-it="Numero del volo (facoltativo)"
+                    data-en="Flight number (optional)">
+                    Numero del volo (facoltativo)
+                </label>
+
+                <input
+                    type="text"
+                    id="volo">
+
+                <p
+                    class="volo-info"
+                    data-it="Consigliamo di indicare il numero del volo per consentirci di monitorare l'arrivo e garantire un servizio efficiente e puntuale."
+                    data-en="We recommend providing your flight number so we can monitor your arrival and provide an efficient, punctual service.">
+                    Consigliamo di indicare il numero del volo per consentirci
+                    di monitorare l'arrivo e garantire un servizio efficiente
+                    e puntuale.
+                </p>
+
+            </div>
+
+            <!-- ORARIO -->
+            <label
+                for="ora"
+                data-it="Orario"
+                data-en="Time">
+                Orario
+            </label>
+
+            <input
+                type="time"
+                id="ora"
+                required>
+
+            <!-- DATA -->
+            <label
+                for="data"
+                data-it="Data"
+                data-en="Date">
+                Data
+            </label>
+
+            <input
+                type="date"
+                id="data"
+                required>
+
+            <!-- PASSEGGERI -->
+            <label
+                for="passeggeri"
+                data-it="Numero passeggeri"
+                data-en="Number of passengers">
+                Numero passeggeri
+            </label>
+
+            <input
+                type="number"
+                id="passeggeri"
+                min="1"
+                step="1"
+                required>
+
+            <!-- NOTE -->
+            <label
+                for="note"
+                data-it="Note extra (facoltativo)"
+                data-en="Additional notes (optional)">
+                Note extra (facoltativo)
+            </label>
+
+            <textarea id="note"></textarea>
+
+            <!-- INFORMAZIONI SUL PAGAMENTO -->
+            <div class="payment-info">
+
+                <strong
+                    data-it="Pagamento anticipato"
+                    data-en="Advance payment">
+                    Pagamento anticipato
+                </strong>
+
+                <p
+                    data-it="Per alcune prenotazioni, a discrezione della Cooperativa Taxi Lecce, può essere richiesto il pagamento anticipato tramite link SumUp. In tali casi, la prenotazione sarà confermata esclusivamente dopo la ricezione del pagamento."
+                    data-en="For some bookings, Cooperativa Taxi Lecce may require advance payment through a SumUp link at its discretion. In these cases, the booking will only be confirmed once payment has been received.">
+                    Per alcune prenotazioni, a discrezione della Cooperativa
+                    Taxi Lecce, può essere richiesto il pagamento anticipato
+                    tramite link SumUp. In tali casi, la prenotazione sarà
+                    confermata esclusivamente dopo la ricezione del pagamento.
+                </p>
+
+            </div>
+
+            <!-- PRIVACY -->
+            <div class="privacy">
+
+                <input
+                    type="checkbox"
+                    id="privacy"
+                    required>
+
+                <label for="privacy" id="privacyLabel">
+                    Dichiaro di aver letto e accettato
+                    <a
+                        href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        l'informativa sulla privacy
+                    </a>
+                    e i
+                    <a
+                        href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Termini e Condizioni
+                    </a>.
+                </label>
+
+            </div>
+
+            <!-- PULSANTE INVIO -->
+            <button
+                type="submit"
+                class="submit-btn"
                 data-it="Prenota su WhatsApp"
                 data-en="Book on WhatsApp">
-            Prenota su WhatsApp
-        </button>
+                Prenota su WhatsApp
+            </button>
 
-    </form>
+        </form>
 
-</div>
+    </div>
 
-<script>
-const parametri = new URLSearchParams(window.location.search);
+    <script>
+        // =========================================
+        // PARAMETRI URL
+        // =========================================
 
-const tipo = parametri.get("tipo");
-const aeroporto = parametri.get("aeroporto");
+        const parametri = new URLSearchParams(window.location.search);
 
-function getLanguage() {
-    const requestedLanguage = parametri.get("lang");
+        const tipo = parametri.get("tipo");
+        const aeroporto = parametri.get("aeroporto");
 
-    if (requestedLanguage === "it" || requestedLanguage === "en") {
-        return requestedLanguage;
-    }
+        // Lingua attualmente attiva nella pagina.
+        // Questa variabile viene aggiornata ogni volta
+        // che l'utente preme IT oppure EN.
+        let linguaCorrente = "it";
 
-    return localStorage.getItem("ctl_lang") || "it";
-}
 
-function setLanguage(lang) {
-    if (lang !== "it" && lang !== "en") return;
+        // =========================================
+        // LETTURA DELLA LINGUA INIZIALE
+        // =========================================
 
-    localStorage.setItem("ctl_lang", lang);
-    document.documentElement.lang = lang;
+        function getLanguage() {
+            const requestedLanguage = parametri.get("lang");
 
-    document.querySelectorAll("[data-it][data-en]").forEach(element => {
-        element.textContent = element.getAttribute("data-" + lang);
-    });
+            if (requestedLanguage === "it" || requestedLanguage === "en") {
+                return requestedLanguage;
+            }
 
-    document.querySelectorAll(".lang-switch button").forEach(button => {
-        const active = button.dataset.lang === lang;
+            const savedLanguage = localStorage.getItem("ctl_lang");
 
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-pressed", String(active));
-    });
+            if (savedLanguage === "it" || savedLanguage === "en") {
+                return savedLanguage;
+            }
 
-    const privacyLabel = document.getElementById("privacyLabel");
+            return "it";
+        }
 
-    if (lang === "en") {
-        privacyLabel.innerHTML =
-            'I confirm that I have read and accepted the ' +
-            '<a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy" ' +
-            'target="_blank" rel="noopener noreferrer">Privacy Policy</a>' +
-            ' and the ' +
-            '<a href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni" ' +
-            'target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.';
-    } else {
-        privacyLabel.innerHTML =
-            'Dichiaro di aver letto e accettato ' +
-            '<a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy" ' +
-            'target="_blank" rel="noopener noreferrer">l\'informativa sulla privacy</a>' +
-            ' e i ' +
-            '<a href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni" ' +
-            'target="_blank" rel="noopener noreferrer">Termini e Condizioni</a>.';
-    }
 
-    document.title = lang === "en"
-        ? "Transfer Request | Cooperativa Taxi Lecce"
-        : "Richiesta Transfer | Cooperativa Taxi Lecce";
-}
+        // =========================================
+        // CAMBIO LINGUA
+        // =========================================
 
-document.querySelectorAll(".lang-switch button").forEach(button => {
-    button.addEventListener("click", () => {
-        setLanguage(button.dataset.lang);
-    });
-});
+        function setLanguage(lang) {
+            if (lang !== "it" && lang !== "en") {
+                return;
+            }
 
-// Precompila gli indirizzi in base alla scelta effettuata
-// nella pagina iniziale.
-if (tipo === "verso" && aeroporto) {
-    document.getElementById("arrivo").value = aeroporto;
-}
+            // Memorizza la lingua realmente selezionata.
+            linguaCorrente = lang;
 
-if (tipo === "da" && aeroporto) {
-    document.getElementById("partenza").value = aeroporto;
-    document.getElementById("voloBox").style.display = "block";
-}
+            // Salva la scelta per le visite successive.
+            localStorage.setItem("ctl_lang", lang);
 
-// La lingua della pagina non cambia la lingua del messaggio WhatsApp.
-document.getElementById("form").addEventListener("submit", function(e) {
-    e.preventDefault();
+            // Aggiorna la lingua del documento.
+            document.documentElement.lang = lang;
 
-    const lang = localStorage.getItem("ctl_lang") || "it";
+            // Traduce tutti gli elementi con data-it e data-en.
+            document.querySelectorAll("[data-it][data-en]").forEach(element => {
+                element.textContent = element.getAttribute("data-" + lang);
+            });
 
-    const nome = document.getElementById("nome").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const partenza = document.getElementById("partenza").value.trim();
-    const arrivo = document.getElementById("arrivo").value.trim();
-    const volo = document.getElementById("volo").value.trim();
-    const ora = document.getElementById("ora").value;
-    const data = document.getElementById("data").value;
-    const passeggeri = document.getElementById("passeggeri").value;
-    const note = document.getElementById("note").value.trim();
+            // Aggiorna lo stato dei pulsanti IT ed EN.
+            document.querySelectorAll(".lang-switch button").forEach(button => {
+                const active = button.dataset.lang === lang;
 
-    if (!document.getElementById("privacy").checked) {
-        alert(lang === "en"
-            ? "You must accept the Privacy Policy and Terms and Conditions to continue."
-            : "Devi accettare l'informativa sulla privacy e i Termini e Condizioni per procedere.");
-        return;
-    }
+                button.classList.toggle("active", active);
 
-    if (!data) {
-        alert(lang === "en"
-            ? "Please select a date."
-            : "Seleziona una data.");
-        return;
-    }
+                button.setAttribute(
+                    "aria-pressed",
+                    String(active)
+                );
+            });
 
-    const dataFormattata = data.split("-").reverse().join("/");
+            // Aggiorna l'informativa sulla privacy.
+            const privacyLabel = document.getElementById("privacyLabel");
 
-    // ATTENZIONE: questo messaggio è sempre in italiano.
-const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
+            if (lang === "en") {
+
+                privacyLabel.innerHTML =
+                    'I confirm that I have read and accepted the ' +
+                    '<a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy" ' +
+                    'target="_blank" rel="noopener noreferrer">Privacy Policy</a>' +
+                    ' and the ' +
+                    '<a href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni" ' +
+                    'target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.';
+
+            } else {
+
+                privacyLabel.innerHTML =
+                    'Dichiaro di aver letto e accettato ' +
+                    '<a href="https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy" ' +
+                    'target="_blank" rel="noopener noreferrer">l\'informativa sulla privacy</a>' +
+                    ' e i ' +
+                    '<a href="https://www.cooperativataxilecce.it/pagina/termini-e-condizioni" ' +
+                    'target="_blank" rel="noopener noreferrer">Termini e Condizioni</a>.';
+
+            }
+
+            // Aggiorna il titolo della scheda del browser.
+            document.title = lang === "en"
+                ? "Transfer Request | Cooperativa Taxi Lecce"
+                : "Richiesta Transfer | Cooperativa Taxi Lecce";
+        }
+
+
+        // =========================================
+        // EVENTI DEI PULSANTI DELLA LINGUA
+        // =========================================
+
+        document.querySelectorAll(".lang-switch button").forEach(button => {
+
+            button.addEventListener("click", function() {
+                setLanguage(this.dataset.lang);
+            });
+
+        });
+
+
+        // =========================================
+        // PRECOMPILAZIONE DEGLI INDIRIZZI
+        // =========================================
+
+        // Transfer verso l'aeroporto:
+        // l'aeroporto è la destinazione.
+
+        if (tipo === "verso" && aeroporto) {
+            document.getElementById("arrivo").value = aeroporto;
+        }
+
+        // Transfer dall'aeroporto:
+        // l'aeroporto è il punto di partenza.
+        // Mostra anche il campo del numero di volo.
+
+        if (tipo === "da" && aeroporto) {
+            document.getElementById("partenza").value = aeroporto;
+
+            document.getElementById("voloBox").style.display = "block";
+        }
+
+
+        // =========================================
+        // INVIO DELLA RICHIESTA SU WHATSAPP
+        // =========================================
+
+        document.getElementById("form").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            // IMPORTANTE:
+            // Usiamo la lingua effettivamente selezionata
+            // nella pagina, non quella eventualmente presente
+            // nei parametri dell'URL.
+            const lang = linguaCorrente;
+
+
+            // -------------------------------------
+            // RECUPERO DEI DATI DEL MODULO
+            // -------------------------------------
+
+            const nome = document.getElementById("nome").value.trim();
+
+            const telefono = document.getElementById("telefono").value.trim();
+
+            const partenza = document.getElementById("partenza").value.trim();
+
+            const arrivo = document.getElementById("arrivo").value.trim();
+
+            const volo = document.getElementById("volo").value.trim();
+
+            const ora = document.getElementById("ora").value;
+
+            const data = document.getElementById("data").value;
+
+            const passeggeri = document.getElementById("passeggeri").value;
+
+            const note = document.getElementById("note").value.trim();
+
+
+            // -------------------------------------
+            // CONTROLLO PRIVACY
+            // -------------------------------------
+
+            if (!document.getElementById("privacy").checked) {
+
+                alert(
+                    lang === "en"
+                        ? "You must accept the Privacy Policy and Terms and Conditions to continue."
+                        : "Devi accettare l'informativa sulla privacy e i Termini e Condizioni per procedere."
+                );
+
+                return;
+            }
+
+
+            // -------------------------------------
+            // CONTROLLO DATA
+            // -------------------------------------
+
+            if (!data) {
+
+                alert(
+                    lang === "en"
+                        ? "Please select a date."
+                        : "Seleziona una data."
+                );
+
+                return;
+            }
+
+
+            // -------------------------------------
+            // FORMATTAZIONE DATA
+            // -------------------------------------
+
+            const dataFormattata = data.split("-").reverse().join("/");
+
+
+            // -------------------------------------
+            // FRASE FINALE IN BASE ALLA LINGUA
+            // -------------------------------------
+
+            const fraseConferma = lang === "en"
+                ? "The request is subject to confirmation by Cooperativa Taxi Lecce."
+                : "La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce.";
+
+
+            // -------------------------------------
+            // MESSAGGIO WHATSAPP
+            // -------------------------------------
+            // Il messaggio è sempre in italiano.
+            // Soltanto la frase finale cambia lingua.
+
+            const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
 
 Nome e cognome:
 ${nome}
@@ -474,20 +688,40 @@ ${note || "Nessuna"}
 
 Il cliente ha dichiarato di aver letto e accettato l'informativa sulla privacy e i Termini e Condizioni.
 
-${lang === "en"
-    ? "The request is subject to confirmation by Cooperativa Taxi Lecce."
-    : "La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce."}`;
+${fraseConferma}`;
 
-    const url =
-        "https://wa.me/393286714428?text=" +
-        encodeURIComponent(messaggio);
 
-    window.open(url, "_blank");
-});
+            // -------------------------------------
+            // APERTURA WHATSAPP
+            // -------------------------------------
 
-// Applica la lingua selezionata nella pagina precedente.
-setLanguage(getLanguage());
-</script>
+            const numeroWhatsApp = "393286714428";
+
+            const url =
+                "https://wa.me/" +
+                numeroWhatsApp +
+                "?text=" +
+                encodeURIComponent(messaggio);
+
+            window.open(url, "_blank");
+
+        });
+
+
+        // =========================================
+        // INIZIALIZZAZIONE DELLA PAGINA
+        // =========================================
+
+        // Imposta la lingua iniziale usando prima il parametro
+        // URL, se presente, e poi la lingua salvata.
+        //
+        // Da questo momento, ogni clic su IT oppure EN
+        // aggiorna linguaCorrente, che verrà utilizzata
+        // anche per la frase finale del messaggio WhatsApp.
+
+        setLanguage(getLanguage());
+
+    </script>
 
 </body>
 </html>
