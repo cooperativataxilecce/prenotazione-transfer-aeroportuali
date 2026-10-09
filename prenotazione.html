@@ -443,7 +443,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
     const dataFormattata = data.split("-").reverse().join("/");
 
     // ATTENZIONE: questo messaggio è sempre in italiano.
-    const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
+const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
 
 Nome e cognome:
 ${nome}
@@ -474,7 +474,9 @@ ${note || "Nessuna"}
 
 Il cliente ha dichiarato di aver letto e accettato l'informativa sulla privacy e i Termini e Condizioni.
 
-La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce.`;
+${lang === "en"
+    ? "The request is subject to confirmation by Cooperativa Taxi Lecce."
+    : "La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce."}`;
 
     const url =
         "https://wa.me/393286714428?text=" +
