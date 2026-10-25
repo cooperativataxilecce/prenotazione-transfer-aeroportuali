@@ -1,346 +1,274 @@
-
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
-    <title>Transfer aeroportuali | CTL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * { box-sizing: border-box; }
+<title>Transfer Aeroportuale | Cooperativa Taxi Lecce</title>
 
-        body {
-            margin: 0;
-            padding: 24px 16px;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #222;
-            background: #f7f8fa;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        .container {
-            width: 100%;
-            max-width: 560px;
-            margin: 0 auto;
-        }
+body {
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 25px;
+}
 
-        .lang-switch {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 18px;
-        }
+.container {
+    position: relative;
+    background: white;
+    max-width: 650px;
+    width: 100%;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
 
-        .lang-switch select {
-            width: auto;
-            max-width: 100%;
-            padding: 9px 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fff;
-            color: #333;
-            font-size: 14px;
-            cursor: pointer;
-        }
+.logo {
+    display: block;
+    margin: 10px auto 25px;
+    width: 400px;
+    max-width: 100%;
+}
 
-        .card {
-            padding: 28px;
-            border: 1px solid #ececec;
-            border-radius: 16px;
-            background: #fff;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, .05);
-        }
+.lang-switch {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-bottom: 18px;
+}
 
-        .logo {
-            display: block;
-            width: 150px;
-            max-width: 60%;
-            height: auto;
-            margin: 0 auto 22px;
-            object-fit: contain;
-        }
+.lang-switch button {
+    width: auto;
+    margin: 0;
+    padding: 8px 12px;
+    background: #fff;
+    color: #444;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: pointer;
+}
 
-        h1 {
-            margin: 0 0 12px;
-            font-size: 26px;
-            line-height: 1.25;
-            text-align: center;
-        }
+.lang-switch button.active {
+    background: #f39c12;
+    color: white;
+    border-color: #f39c12;
+}
 
-        .intro {
-            margin: 0 0 26px;
-            color: #666;
-            font-size: 15px;
-            line-height: 1.6;
-            text-align: center;
-        }
+h2 {
+    text-align: center;
+    color: #111;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
 
-        label {
-            display: block;
-            margin: 18px 0 8px;
-            font-size: 14px;
-            font-weight: 700;
-        }
+.info {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
 
-        select, input, button {
-            width: 100%;
-            min-height: 48px;
-            font: inherit;
-        }
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
 
-        .field {
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 9px;
-            background: #fff;
-            color: #222;
-        }
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    background: white;
+}
 
-        .field:focus, .lang-switch select:focus {
-            outline: 2px solid #f0a04b;
-            outline-offset: 2px;
-        }
+.continue-btn {
+    width: 100%;
+    margin-top: 35px;
+    padding: 16px;
+    background: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .continue {
-            margin-top: 24px;
-            padding: 14px 18px;
-            border: 0;
-            border-radius: 9px;
-            background: #ef963c;
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-        }
+.continue-btn:hover {
+    background: #d87f00;
+}
 
-        .continue:hover { background: #dc8128; }
+@media (max-width: 480px) {
+    .container {
+        padding: 22px;
+    }
 
-        .error {
-            display: none;
-            margin-top: 14px;
-            color: #b42318;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 480px) {
-            body { padding: 16px 12px; }
-            .card { padding: 22px 18px; }
-            h1 { font-size: 23px; }
-        }
-    </style>
+    body {
+        padding: 15px;
+    }
+}
+</style>
 </head>
 
 <body>
-    <main class="container">
-        <div class="lang-switch">
-            <select id="languageSelect" aria-label="Seleziona lingua">
-                <option value="it">🇮🇹 Italiano</option>
-                <option value="en">🇬🇧 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="es">🇪🇸 Español</option>
-                <option value="de">🇩🇪 Deutsch</option>
-            </select>
-        </div>
 
-        <section class="card">
-            <img class="logo" src="logo3.png" alt="CTL">
+<div class="container">
 
-            <h1 id="pageTitle">Transfer aeroportuali</h1>
-            <p class="intro" id="intro">
-                Organizza il tuo trasferimento con CTL. Scegli il servizio e l'aeroporto.
-            </p>
+    <div class="lang-switch" aria-label="Seleziona lingua">
+        <button type="button" data-lang="it" class="active"
+                aria-pressed="true">🇮🇹 IT</button>
 
-            <form id="transferForm">
-                <label for="transferType" id="typeLabel">Tipo di transfer</label>
-                <select class="field" id="transferType" required>
-                    <option value="" id="typePlaceholder">Seleziona un servizio</option>
-                    <option value="aeroportuale" id="airportTransferOption">Transfer aeroportuale</option>
-                    <option value="privati" id="privateTransferOption">Transfer privato</option>
-                </select>
+        <button type="button" data-lang="en"
+                aria-pressed="false">🇬🇧 EN</button>
+    </div>
 
-                <div id="airportGroup">
-                    <label for="airport" id="airportLabel">Aeroporto</label>
-                    <select class="field" id="airport">
-                        <option value="" id="airportPlaceholder">Seleziona l'aeroporto</option>
-                        <option value="Brindisi">Brindisi (BDS)</option>
-                        <option value="Bari">Bari (BRI)</option>
-                    </select>
-                </div>
+    <img src="logo3.png" class="logo" alt="Cooperativa Taxi Lecce">
 
-                <button class="continue" type="submit" id="continueButton">
-                    Continua
-                </button>
+    <h2 data-it="Transfer Aeroportuale"
+        data-en="Airport Transfer">Transfer Aeroportuale</h2>
 
-                <p class="error" id="errorMessage" role="alert"></p>
-            </form>
-        </section>
-    </main>
+    <p class="info"
+       data-it="Scegli il tipo di transfer e l'aeroporto. Ti guideremo nella richiesta del servizio."
+       data-en="Choose your transfer type and airport. We will guide you through the booking request.">
+       Scegli il tipo di transfer e l'aeroporto.
+       Ti guideremo nella richiesta del servizio.
+    </p>
 
-    <script>
-        const translations = {
-            it: {
-                title: "Transfer aeroportuali",
-                intro: "Organizza il tuo trasferimento con CTL. Scegli il servizio e l'aeroporto.",
-                typeLabel: "Tipo di transfer",
-                typePlaceholder: "Seleziona un servizio",
-                airportTransfer: "Transfer aeroportuale",
-                privateTransfer: "Transfer privato",
-                airportLabel: "Aeroporto",
-                airportPlaceholder: "Seleziona l'aeroporto",
-                continue: "Continua",
-                errorType: "Seleziona il tipo di transfer.",
-                errorAirport: "Seleziona l'aeroporto."
-            },
-            en: {
-                title: "Airport transfers",
-                intro: "Organize your transfer with CTL. Choose the service and airport.",
-                typeLabel: "Transfer type",
-                typePlaceholder: "Select a service",
-                airportTransfer: "Airport transfer",
-                privateTransfer: "Private transfer",
-                airportLabel: "Airport",
-                airportPlaceholder: "Select the airport",
-                continue: "Continue",
-                errorType: "Please select a transfer type.",
-                errorAirport: "Please select an airport."
-            },
-            fr: {
-                title: "Transferts aéroport",
-                intro: "Organisez votre transfert avec CTL. Choisissez le service et l'aéroport.",
-                typeLabel: "Type de transfert",
-                typePlaceholder: "Sélectionnez un service",
-                airportTransfer: "Transfert aéroport",
-                privateTransfer: "Transfert privé",
-                airportLabel: "Aéroport",
-                airportPlaceholder: "Sélectionnez l'aéroport",
-                continue: "Continuer",
-                errorType: "Veuillez sélectionner le type de transfert.",
-                errorAirport: "Veuillez sélectionner un aéroport."
-            },
-            es: {
-                title: "Traslados al aeropuerto",
-                intro: "Organiza tu traslado con CTL. Elige el servicio y el aeropuerto.",
-                typeLabel: "Tipo de traslado",
-                typePlaceholder: "Selecciona un servicio",
-                airportTransfer: "Traslado al aeropuerto",
-                privateTransfer: "Traslado privado",
-                airportLabel: "Aeropuerto",
-                airportPlaceholder: "Selecciona el aeropuerto",
-                continue: "Continuar",
-                errorType: "Selecciona el tipo de traslado.",
-                errorAirport: "Selecciona el aeropuerto."
-            },
-            de: {
-                title: "Flughafentransfers",
-                intro: "Organisieren Sie Ihren Transfer mit CTL. Wählen Sie den Service und den Flughafen.",
-                typeLabel: "Transferart",
-                typePlaceholder: "Service auswählen",
-                airportTransfer: "Flughafentransfer",
-                privateTransfer: "Privater Transfer",
-                airportLabel: "Flughafen",
-                airportPlaceholder: "Flughafen auswählen",
-                continue: "Weiter",
-                errorType: "Bitte wählen Sie eine Transferart aus.",
-                errorAirport: "Bitte wählen Sie einen Flughafen aus."
-            }
-        };
+    <label for="tipo"
+           data-it="Tipo di transfer"
+           data-en="Transfer type">Tipo di transfer</label>
 
-        const validLanguages = ["it", "en", "fr", "es", "de"];
-        const languageSelect = document.getElementById("languageSelect");
-        const transferType = document.getElementById("transferType");
-        const airportGroup = document.getElementById("airportGroup");
-        const airportSelect = document.getElementById("airport");
-        const errorMessage = document.getElementById("errorMessage");
+    <select id="tipo" required>
+        <option value=""
+                data-it="Seleziona..."
+                data-en="Select...">Seleziona...</option>
 
-        function getInitialLanguage() {
-            const saved = localStorage.getItem("ctl_lang");
+        <option value="verso"
+                data-it="Devo raggiungere l'aeroporto"
+                data-en="I need to get to the airport">
+            Devo raggiungere l'aeroporto
+        </option>
 
-            if (validLanguages.includes(saved)) {
-                return saved;
-            }
+        <option value="da"
+                data-it="Devo essere prelevato dall'aeroporto"
+                data-en="I need to be picked up from the airport">
+            Devo essere prelevato dall'aeroporto
+        </option>
+    </select>
 
-            const urlLanguage = new URLSearchParams(window.location.search).get("lang");
+    <label for="aeroporto"
+           data-it="Aeroporto"
+           data-en="Airport">Aeroporto</label>
 
-            if (validLanguages.includes(urlLanguage)) {
-                return urlLanguage;
-            }
+    <select id="aeroporto" required>
+        <option value=""
+                data-it="Seleziona aeroporto..."
+                data-en="Select airport...">Seleziona aeroporto...</option>
 
-            return "it";
+        <option value="Aeroporto del Salento - Brindisi (BDS)"
+                data-it="Aeroporto di Brindisi"
+                data-en="Brindisi Airport">
+            Aeroporto di Brindisi
+        </option>
+
+        <option value="Aeroporto Internazionale di Bari (BRI)"
+                data-it="Aeroporto di Bari"
+                data-en="Bari Airport">
+            Aeroporto di Bari
+        </option>
+    </select>
+
+    <button type="button" class="continue-btn" onclick="continua()"
+            data-it="Continua"
+            data-en="Continue">Continua</button>
+
+</div>
+
+<script>
+function getLanguage() {
+    const params = new URLSearchParams(window.location.search);
+    const requestedLanguage = params.get("lang");
+
+    if (requestedLanguage === "it" || requestedLanguage === "en") {
+        return requestedLanguage;
+    }
+
+    return localStorage.getItem("ctl_lang") || "it";
+}
+
+function setLanguage(lang) {
+    if (lang !== "it" && lang !== "en") return;
+
+    localStorage.setItem("ctl_lang", lang);
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-it][data-en]").forEach(element => {
+        const translation = element.getAttribute("data-" + lang);
+
+        if (translation !== null) {
+            element.textContent = translation;
         }
+    });
 
-        function setLanguage(lang) {
-            if (!validLanguages.includes(lang)) lang = "it";
+    document.querySelectorAll(".lang-switch button").forEach(button => {
+        const active = button.dataset.lang === lang;
 
-            localStorage.setItem("ctl_lang", lang);
-            document.documentElement.lang = lang;
-            languageSelect.value = lang;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+    });
 
-            const t = translations[lang];
+    document.title = lang === "en"
+        ? "Airport Transfer | Cooperativa Taxi Lecce"
+        : "Transfer Aeroportuale | Cooperativa Taxi Lecce";
+}
 
-            document.title = t.title + " | CTL";
-            document.getElementById("pageTitle").textContent = t.title;
-            document.getElementById("intro").textContent = t.intro;
-            document.getElementById("typeLabel").textContent = t.typeLabel;
-            document.getElementById("typePlaceholder").textContent = t.typePlaceholder;
-            document.getElementById("airportTransferOption").textContent = t.airportTransfer;
-            document.getElementById("privateTransferOption").textContent = t.privateTransfer;
-            document.getElementById("airportLabel").textContent = t.airportLabel;
-            document.getElementById("airportPlaceholder").textContent = t.airportPlaceholder;
-            document.getElementById("continueButton").textContent = t.continue;
+document.querySelectorAll(".lang-switch button").forEach(button => {
+    button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+    });
+});
 
-            updateAirportVisibility();
-            errorMessage.textContent = "";
-            errorMessage.style.display = "none";
-        }
+function continua() {
+    const tipo = document.getElementById("tipo").value;
+    const aeroporto = document.getElementById("aeroporto").value;
+    const lang = localStorage.getItem("ctl_lang") || "it";
 
-        function updateAirportVisibility() {
-            const isAirportTransfer = transferType.value === "aeroportuale";
+    if (!tipo || !aeroporto) {
+        alert(lang === "en"
+            ? "Please select the transfer type and airport."
+            : "Seleziona il tipo di transfer e l'aeroporto.");
 
-            airportGroup.style.display = isAirportTransfer ? "block" : "none";
-            airportSelect.required = isAirportTransfer;
+        return;
+    }
 
-            if (!isAirportTransfer) airportSelect.value = "";
-        }
+    const params = new URLSearchParams({
+        tipo: tipo,
+        aeroporto: aeroporto,
+        lang: lang
+    });
 
-        languageSelect.addEventListener("change", function () {
-            setLanguage(this.value);
-        });
+    window.location.href = "prenotazione.html?" + params.toString();
+}
 
-        transferType.addEventListener("change", updateAirportVisibility);
+setLanguage(getLanguage());
+</script>
 
-        document.getElementById("transferForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const lang = validLanguages.includes(localStorage.getItem("ctl_lang"))
-                ? localStorage.getItem("ctl_lang")
-                : "it";
-
-            const t = translations[lang];
-
-            if (!transferType.value) {
-                errorMessage.textContent = t.errorType;
-                errorMessage.style.display = "block";
-                return;
-            }
-
-            if (transferType.value === "aeroportuale" && !airportSelect.value) {
-                errorMessage.textContent = t.errorAirport;
-                errorMessage.style.display = "block";
-                return;
-            }
-
-            const params = new URLSearchParams();
-            params.set("tipo", transferType.value);
-            params.set("lang", lang);
-
-            if (transferType.value === "aeroportuale") {
-                params.set("aeroporto", airportSelect.value);
-            }
-
-            window.location.href = "prenotazione.html?" + params.toString();
-        });
-
-        setLanguage(getInitialLanguage());
-        updateAirportVisibility();
-    </script>
 </body>
 </html>
