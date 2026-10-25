@@ -2,509 +2,653 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Richiesta Transfer | Cooperativa Taxi Lecce</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Prenotazione transfer | CTL</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-body {
-    background: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 25px;
-}
-.container {
-    position: relative;
-    background: white;
-    max-width: 650px;
-    width: 100%;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.15);
-}
-.logo {
-    display: block;
-    margin: 10px auto 25px;
-    width: 400px;
-    max-width: 100%;
-}
-.lang-switch {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 18px;
-}
-.lang-switch button {
-    width: auto;
-    margin: 0;
-    padding: 8px 10px;
-    background: white;
-    color: #444;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: normal;
-    cursor: pointer;
-}
-.lang-switch button.active {
-    background: #f39c12;
-    color: white;
-    border-color: #f39c12;
-}
-h2 {
-    text-align: center;
-    color: #111;
-    margin-bottom: 10px;
-    line-height: 1.4;
-}
-.info {
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 18px;
-    margin-bottom: 6px;
-}
-input, textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 15px;
-}
-input:focus, textarea:focus, select:focus {
-    outline: 2px solid rgba(243,156,18,.3);
-    border-color: #f39c12;
-}
-textarea {
-    height: 120px;
-    resize: vertical;
-}
-.volo-info {
-    font-size: 12px;
-    color: #777;
-    margin-top: 5px;
-    line-height: 1.5;
-}
-.privacy {
-    margin-top: 25px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 14px;
-    color: #555;
-}
-.privacy input {
-    width: auto;
-    margin-top: 3px;
-    flex-shrink: 0;
-}
-.privacy label {
-    margin: 0;
-    font-weight: normal;
-    line-height: 1.5;
-}
-.privacy a {
-    color: #d87f00;
-}
-.payment-info {
-    margin-top: 25px;
-    padding: 15px;
-    background: #f8f8f8;
-    border-radius: 10px;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.5;
-}
-.payment-info strong {
-    display: block;
-    color: #111;
-    margin-bottom: 8px;
-}
-.submit-btn {
-    width: 100%;
-    margin-top: 30px;
-    padding: 16px;
-    background: #f39c12;
-    border: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 12px;
-    cursor: pointer;
-}
-.submit-btn:hover {
-    background: #d87f00;
-}
-@media (max-width: 480px) {
-    body { padding: 15px; }
-    .container { padding: 22px; }
-}
-</style>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background: #f7f8fa;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 18px;
+        }
+
+        .lang-switch select {
+            width: auto;
+            max-width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .card {
+            padding: 28px;
+            border: 1px solid #ececec;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .05);
+        }
+
+        .logo {
+            display: block;
+            width: 150px;
+            max-width: 60%;
+            height: auto;
+            margin: 0 auto 22px;
+            object-fit: contain;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 26px;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .intro {
+            margin: 0 0 25px;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .section-title {
+            margin: 25px 0 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 17px;
+        }
+
+        .field-group { margin-bottom: 16px; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            font: inherit;
+        }
+
+        input, select, textarea {
+            min-height: 46px;
+            padding: 11px 12px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            background: #fff;
+            color: #222;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #f0a04b;
+            outline-offset: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 14px;
+        }
+
+        .check-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 18px 0;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .check-row input {
+            width: 18px;
+            min-height: 18px;
+            margin: 1px 0 0;
+            flex: 0 0 18px;
+        }
+
+        .check-row label {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .payment-note {
+            padding: 14px;
+            border-radius: 9px;
+            background: #f7f8fa;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .submit-button {
+            margin-top: 10px;
+            padding: 15px 18px;
+            border: 0;
+            border-radius: 9px;
+            background: #ef963c;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .submit-button:hover { background: #dc8128; }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            color: #b42318;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .back-link:hover { text-decoration: underline; }
+
+        @media (max-width: 520px) {
+            body { padding: 16px 12px; }
+            .card { padding: 22px 18px; }
+            h1 { font-size: 23px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 
 <body>
-<div class="container">
+    <main class="container">
+        <div class="lang-switch">
+            <select id="languageSelect" aria-label="Seleziona lingua">
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+        </div>
 
-    <div class="lang-switch" data-i18n-aria="languageSelector">
-        <button type="button" data-lang="it" aria-pressed="false">🇮🇹 IT</button>
-        <button type="button" data-lang="en" aria-pressed="false">🇬🇧 EN</button>
-        <button type="button" data-lang="fr" aria-pressed="false">🇫🇷 FR</button>
-        <button type="button" data-lang="es" aria-pressed="false">🇪🇸 ES</button>
-        <button type="button" data-lang="de" aria-pressed="false">🇩🇪 DE</button>
-    </div>
+        <section class="card">
+            <img class="logo" src="logo3.png" alt="CTL">
 
-    <img src="logo3.png" class="logo" alt="Cooperativa Taxi Lecce">
-
-    <h2 data-i18n="heading">Richiesta Transfer Aeroportuale</h2>
-
-    <p class="info" data-i18n="intro">
-        Completa i dati per richiedere il tuo transfer. La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
-    </p>
-
-    <form id="form">
-
-        <label for="nome" data-i18n="name">Nome e cognome</label>
-        <input type="text" id="nome" autocomplete="name" required>
-
-        <label for="telefono" data-i18n="phone">Numero di telefono</label>
-        <input type="tel" id="telefono" autocomplete="tel" required>
-
-        <label for="partenza" data-i18n="pickup">Indirizzo di partenza</label>
-        <input type="text" id="partenza" autocomplete="street-address" required>
-
-        <label for="arrivo" data-i18n="destination">Indirizzo di arrivo</label>
-        <input type="text" id="arrivo" required>
-
-        <div id="voloBox" style="display:none;">
-            <label for="volo" data-i18n="flightNumber">Numero del volo (facoltativo)</label>
-            <input type="text" id="volo">
-            <p class="volo-info" data-i18n="flightInfo">
-                Consigliamo di indicare il numero del volo per consentirci di monitorare l'arrivo e garantire un servizio efficiente e puntuale.
+            <h1 id="pageTitle">Prenota il tuo transfer</h1>
+            <p class="intro" id="intro">
+                Inserisci i tuoi dati e i dettagli del viaggio. Ti ricontatteremo per confermare la prenotazione.
             </p>
-        </div>
 
-        <label for="ora" data-i18n="time">Orario</label>
-        <input type="time" id="ora" required>
+            <form id="bookingForm">
+                <h2 class="section-title" id="journeyTitle">Dettagli del transfer</h2>
 
-        <label for="data" data-i18n="date">Data</label>
-        <input type="date" id="data" required>
+                <div class="grid">
+                    <div class="field-group">
+                        <label for="transferType" id="typeLabel">Tipo di transfer</label>
+                        <select id="transferType" name="tipo" required>
+                            <option value="aeroportuale" id="airportTransferOption">Transfer aeroportuale</option>
+                            <option value="privati" id="privateTransferOption">Transfer privato</option>
+                        </select>
+                    </div>
 
-        <label for="passeggeri" data-i18n="passengers">Numero passeggeri</label>
-        <input type="number" id="passeggeri" min="1" step="1" required>
+                    <div class="field-group" id="airportGroup">
+                        <label for="airport" id="airportLabel">Aeroporto</label>
+                        <select id="airport" name="aeroporto">
+                            <option value="Brindisi">Brindisi (BDS)</option>
+                            <option value="Bari">Bari (BRI)</option>
+                        </select>
+                    </div>
+                </div>
 
-        <label for="note" data-i18n="notes">Note extra (facoltativo)</label>
-        <textarea id="note"></textarea>
+                <div class="field-group" id="flightGroup">
+                    <label for="flight" id="flightLabel">Numero del volo</label>
+                    <input id="flight" name="volo" type="text" placeholder="Es. FR1234">
+                </div>
 
-        <div class="payment-info">
-            <strong data-i18n="paymentTitle">Pagamento anticipato</strong>
-            <p data-i18n="paymentText">
-                Per alcune prenotazioni, a discrezione della Cooperativa Taxi Lecce, può essere richiesto il pagamento anticipato tramite link SumUp. In tali casi, la prenotazione sarà confermata esclusivamente dopo la ricezione del pagamento.
-            </p>
-        </div>
+                <div class="field-group">
+                    <label for="pickup" id="pickupLabel">Indirizzo di partenza</label>
+                    <input id="pickup" name="partenza" type="text" required autocomplete="street-address">
+                </div>
 
-        <div class="privacy">
-            <input type="checkbox" id="privacy" required>
-            <label for="privacy" id="privacyLabel"></label>
-        </div>
+                <div class="field-group">
+                    <label for="destination" id="destinationLabel">Indirizzo di destinazione</label>
+                    <input id="destination" name="destinazione" type="text" required>
+                </div>
 
-        <button type="submit" class="submit-btn" data-i18n="submit">
-            Prenota su WhatsApp
-        </button>
+                <div class="grid">
+                    <div class="field-group">
+                        <label for="date" id="dateLabel">Data del transfer</label>
+                        <input id="date" name="data" type="date" required>
+                    </div>
 
-    </form>
-</div>
+                    <div class="field-group">
+                        <label for="time" id="timeLabel">Orario</label>
+                        <input id="time" name="orario" type="time" required>
+                    </div>
+                </div>
 
-<script>
-const parametri = new URLSearchParams(window.location.search);
-const tipo = parametri.get("tipo");
-const aeroporto = parametri.get("aeroporto");
+                <div class="grid">
+                    <div class="field-group">
+                        <label for="passengers" id="passengersLabel">Numero di passeggeri</label>
+                        <select id="passengers" name="passeggeri" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
 
-const privacyUrl = "https://www.cooperativataxilecce.it/pagina/informativa-sulla-privacy";
-const termsUrl = "https://www.cooperativataxilecce.it/pagina/termini-e-condizioni";
-const validLanguages = ["it", "en", "fr", "es", "de"];
+                    <div class="field-group">
+                        <label for="luggage" id="luggageLabel">Bagagli</label>
+                        <select id="luggage" name="bagagli">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                </div>
 
-let linguaCorrente = "it";
+                <h2 class="section-title" id="contactTitle">Dati di contatto</h2>
 
-const translations = {
-    it: {
-        title: "Richiesta Transfer | Cooperativa Taxi Lecce",
-        languageSelector: "Seleziona lingua",
-        heading: "Richiesta Transfer Aeroportuale",
-        intro: "Completa i dati per richiedere il tuo transfer. La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.",
-        name: "Nome e cognome",
-        phone: "Numero di telefono",
-        pickup: "Indirizzo di partenza",
-        destination: "Indirizzo di arrivo",
-        flightNumber: "Numero del volo (facoltativo)",
-        flightInfo: "Consigliamo di indicare il numero del volo per consentirci di monitorare l'arrivo e garantire un servizio efficiente e puntuale.",
-        time: "Orario",
-        date: "Data",
-        passengers: "Numero passeggeri",
-        notes: "Note extra (facoltativo)",
-        paymentTitle: "Pagamento anticipato",
-        paymentText: "Per alcune prenotazioni, a discrezione della Cooperativa Taxi Lecce, può essere richiesto il pagamento anticipato tramite link SumUp. In tali casi, la prenotazione sarà confermata esclusivamente dopo la ricezione del pagamento.",
-        privacy: "Dichiaro di aver letto e accettato <a href=\"PRIVACY_URL\" target=\"_blank\" rel=\"noopener noreferrer\">l'informativa sulla privacy</a> e i <a href=\"TERMS_URL\" target=\"_blank\" rel=\"noopener noreferrer\">Termini e Condizioni</a>.",
-        submit: "Prenota su WhatsApp",
-        privacyError: "Devi accettare l'informativa sulla privacy e i Termini e Condizioni per procedere.",
-        dateError: "Seleziona una data.",
-        confirmation: "La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce.",
-        flightNotProvided: "Non indicato",
-        noNotes: "Nessuna"
-    },
-    en: {
-        title: "Transfer Request | Cooperativa Taxi Lecce",
-        languageSelector: "Select language",
-        heading: "Airport Transfer Request",
-        intro: "Fill in the details to request your transfer. Your booking will be confirmed by Cooperativa Taxi Lecce.",
-        name: "Full name",
-        phone: "Phone number",
-        pickup: "Pickup address",
-        destination: "Destination address",
-        flightNumber: "Flight number (optional)",
-        flightInfo: "We recommend providing your flight number so we can monitor your arrival and provide an efficient, punctual service.",
-        time: "Time",
-        date: "Date",
-        passengers: "Number of passengers",
-        notes: "Additional notes (optional)",
-        paymentTitle: "Advance payment",
-        paymentText: "For some bookings, Cooperativa Taxi Lecce may require advance payment through a SumUp link at its discretion. In these cases, the booking will only be confirmed once payment has been received.",
-        privacy: "I confirm that I have read and accepted the <a href=\"PRIVACY_URL\" target=\"_blank\" rel=\"noopener noreferrer\">Privacy Policy</a> and the <a href=\"TERMS_URL\" target=\"_blank\" rel=\"noopener noreferrer\">Terms and Conditions</a>.",
-        submit: "Book on WhatsApp",
-        privacyError: "You must accept the Privacy Policy and Terms and Conditions to continue.",
-        dateError: "Please select a date.",
-        confirmation: "The request is subject to confirmation by Cooperativa Taxi Lecce.",
-        flightNotProvided: "Not provided",
-        noNotes: "None"
-    },
-    fr: {
-        title: "Demande de transfert | Cooperativa Taxi Lecce",
-        languageSelector: "Choisir la langue",
-        heading: "Demande de transfert aéroport",
-        intro: "Remplissez les informations pour demander votre transfert. Votre réservation sera confirmée par Cooperativa Taxi Lecce.",
-        name: "Nom et prénom",
-        phone: "Numéro de téléphone",
-        pickup: "Adresse de départ",
-        destination: "Adresse de destination",
-        flightNumber: "Numéro de vol (facultatif)",
-        flightInfo: "Nous vous recommandons d'indiquer votre numéro de vol afin que nous puissions suivre votre arrivée et assurer un service efficace et ponctuel.",
-        time: "Heure",
-        date: "Date",
-        passengers: "Nombre de passagers",
-        notes: "Notes supplémentaires (facultatif)",
-        paymentTitle: "Paiement anticipé",
-        paymentText: "Pour certaines réservations, Cooperativa Taxi Lecce peut, à sa discrétion, demander un paiement anticipé via un lien SumUp. Dans ce cas, la réservation ne sera confirmée qu'après réception du paiement.",
-        privacy: "Je déclare avoir lu et accepté la <a href=\"PRIVACY_URL\" target=\"_blank\" rel=\"noopener noreferrer\">politique de confidentialité</a> et les <a href=\"TERMS_URL\" target=\"_blank\" rel=\"noopener noreferrer\">conditions générales</a>.",
-        submit: "Réserver sur WhatsApp",
-        privacyError: "Vous devez accepter la politique de confidentialité et les conditions générales pour continuer.",
-        dateError: "Veuillez sélectionner une date.",
-        confirmation: "La demande est soumise à confirmation par Cooperativa Taxi Lecce.",
-        flightNotProvided: "Non indiqué",
-        noNotes: "Aucune"
-    },
-    es: {
-        title: "Solicitud de traslado | Cooperativa Taxi Lecce",
-        languageSelector: "Seleccionar idioma",
-        heading: "Solicitud de traslado al aeropuerto",
-        intro: "Completa los datos para solicitar tu traslado. Cooperativa Taxi Lecce confirmará la reserva.",
-        name: "Nombre y apellidos",
-        phone: "Número de teléfono",
-        pickup: "Dirección de recogida",
-        destination: "Dirección de destino",
-        flightNumber: "Número de vuelo (opcional)",
-        flightInfo: "Recomendamos indicar el número de vuelo para que podamos seguir tu llegada y ofrecer un servicio eficiente y puntual.",
-        time: "Hora",
-        date: "Fecha",
-        passengers: "Número de pasajeros",
-        notes: "Notas adicionales (opcional)",
-        paymentTitle: "Pago por adelantado",
-        paymentText: "Para algunas reservas, Cooperativa Taxi Lecce puede solicitar, a su discreción, un pago por adelantado mediante un enlace de SumUp. En estos casos, la reserva solo se confirmará una vez recibido el pago.",
-        privacy: "Declaro que he leído y aceptado la <a href=\"PRIVACY_URL\" target=\"_blank\" rel=\"noopener noreferrer\">política de privacidad</a> y los <a href=\"TERMS_URL\" target=\"_blank\" rel=\"noopener noreferrer\">términos y condiciones</a>.",
-        submit: "Reservar por WhatsApp",
-        privacyError: "Debes aceptar la política de privacidad y los términos y condiciones para continuar.",
-        dateError: "Selecciona una fecha.",
-        confirmation: "La solicitud está sujeta a la confirmación de Cooperativa Taxi Lecce.",
-        flightNotProvided: "No indicado",
-        noNotes: "Ninguna"
-    },
-    de: {
-        title: "Transferanfrage | Cooperativa Taxi Lecce",
-        languageSelector: "Sprache auswählen",
-        heading: "Anfrage für Flughafentransfer",
-        intro: "Füllen Sie die Angaben aus, um Ihren Transfer anzufragen. Die Buchung wird von Cooperativa Taxi Lecce bestätigt.",
-        name: "Vor- und Nachname",
-        phone: "Telefonnummer",
-        pickup: "Abholadresse",
-        destination: "Zieladresse",
-        flightNumber: "Flugnummer (optional)",
-        flightInfo: "Wir empfehlen, Ihre Flugnummer anzugeben, damit wir Ihre Ankunft verfolgen und einen effizienten, pünktlichen Service bieten können.",
-        time: "Uhrzeit",
-        date: "Datum",
-        passengers: "Anzahl der Fahrgäste",
-        notes: "Zusätzliche Hinweise (optional)",
-        paymentTitle: "Vorauszahlung",
-        paymentText: "Für einige Buchungen kann Cooperativa Taxi Lecce nach eigenem Ermessen eine Vorauszahlung über einen SumUp-Link verlangen. In diesen Fällen wird die Buchung erst nach Zahlungseingang bestätigt.",
-        privacy: "Ich bestätige, dass ich die <a href=\"PRIVACY_URL\" target=\"_blank\" rel=\"noopener noreferrer\">Datenschutzerklärung</a> und die <a href=\"TERMS_URL\" target=\"_blank\" rel=\"noopener noreferrer\">Allgemeinen Geschäftsbedingungen</a> gelesen habe und akzeptiere.",
-        submit: "Über WhatsApp buchen",
-        privacyError: "Sie müssen die Datenschutzerklärung und die Allgemeinen Geschäftsbedingungen akzeptieren, um fortzufahren.",
-        dateError: "Bitte wählen Sie ein Datum aus.",
-        confirmation: "Die Anfrage muss von Cooperativa Taxi Lecce bestätigt werden.",
-        flightNotProvided: "Nicht angegeben",
-        noNotes: "Keine"
-    }
-};
+                <div class="field-group">
+                    <label for="name" id="nameLabel">Nome e cognome</label>
+                    <input id="name" name="nome" type="text" required autocomplete="name">
+                </div>
 
-function getLanguage() {
-    const saved = localStorage.getItem("ctl_lang");
-    if (validLanguages.includes(saved)) return saved;
+                <div class="grid">
+                    <div class="field-group">
+                        <label for="phone" id="phoneLabel">Numero di telefono</label>
+                        <input id="phone" name="telefono" type="tel" required autocomplete="tel">
+                    </div>
 
-    const requested = parametri.get("lang");
-    if (validLanguages.includes(requested)) return requested;
+                    <div class="field-group">
+                        <label for="email" id="emailLabel">Email (facoltativa)</label>
+                        <input id="email" name="email" type="email" autocomplete="email">
+                    </div>
+                </div>
 
-    return "it";
-}
+                <div class="field-group">
+                    <label for="notes" id="notesLabel">Note aggiuntive (facoltative)</label>
+                    <textarea id="notes" name="note"></textarea>
+                </div>
 
-function setLanguage(lang) {
-    if (!validLanguages.includes(lang)) return;
+                <h2 class="section-title" id="paymentTitle">Pagamento</h2>
 
-    linguaCorrente = lang;
-    localStorage.setItem("ctl_lang", lang);
-    document.documentElement.lang = lang;
+                <div class="payment-note" id="paymentNote">
+                    Le modalità di pagamento saranno concordate con CTL al momento della conferma della prenotazione.
+                </div>
 
-    document.querySelectorAll("[data-i18n]").forEach(element => {
-        const key = element.dataset.i18n;
-        if (translations[lang][key] !== undefined) {
-            element.textContent = translations[lang][key];
+                <div class="check-row">
+                    <input id="privacy" name="privacy" type="checkbox" required>
+                    <label for="privacy" id="privacyLabel">
+                        Confermo di aver letto l'informativa sulla privacy e acconsento al trattamento dei miei dati per gestire la richiesta.
+                    </label>
+                </div>
+
+                <button class="submit-button" id="submitButton" type="submit">
+                    Continua su WhatsApp
+                </button>
+
+                <p class="error" id="errorMessage" role="alert"></p>
+            </form>
+
+            <a class="back-link" id="backLink" href="index.html">Torna indietro</a>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            it: {
+                title: "Prenota il tuo transfer",
+                intro: "Inserisci i tuoi dati e i dettagli del viaggio. Ti ricontatteremo per confermare la prenotazione.",
+                journeyTitle: "Dettagli del transfer",
+                typeLabel: "Tipo di transfer",
+                airportTransfer: "Transfer aeroportuale",
+                privateTransfer: "Transfer privato",
+                airportLabel: "Aeroporto",
+                flightLabel: "Numero del volo",
+                pickupLabel: "Indirizzo di partenza",
+                destinationLabel: "Indirizzo di destinazione",
+                dateLabel: "Data del transfer",
+                timeLabel: "Orario",
+                passengersLabel: "Numero di passeggeri",
+                luggageLabel: "Bagagli",
+                contactTitle: "Dati di contatto",
+                nameLabel: "Nome e cognome",
+                phoneLabel: "Numero di telefono",
+                emailLabel: "Email (facoltativa)",
+                notesLabel: "Note aggiuntive (facoltative)",
+                paymentTitle: "Pagamento",
+                paymentNote: "Le modalità di pagamento saranno concordate con CTL al momento della conferma della prenotazione.",
+                privacyLabel: "Confermo di aver letto l'informativa sulla privacy e acconsento al trattamento dei miei dati per gestire la richiesta.",
+                submit: "Continua su WhatsApp",
+                back: "Torna indietro",
+                error: "Controlla di aver compilato tutti i campi obbligatori e accettato l'informativa sulla privacy.",
+                finalMessage: "Grazie per aver contattato CTL. La tua richiesta sarà verificata."
+            },
+            en: {
+                title: "Book your transfer",
+                intro: "Enter your details and journey information. We will contact you to confirm your booking.",
+                journeyTitle: "Transfer details",
+                typeLabel: "Transfer type",
+                airportTransfer: "Airport transfer",
+                privateTransfer: "Private transfer",
+                airportLabel: "Airport",
+                flightLabel: "Flight number",
+                pickupLabel: "Pickup address",
+                destinationLabel: "Destination address",
+                dateLabel: "Transfer date",
+                timeLabel: "Time",
+                passengersLabel: "Number of passengers",
+                luggageLabel: "Luggage",
+                contactTitle: "Contact details",
+                nameLabel: "Full name",
+                phoneLabel: "Phone number",
+                emailLabel: "Email (optional)",
+                notesLabel: "Additional notes (optional)",
+                paymentTitle: "Payment",
+                paymentNote: "Payment arrangements will be agreed with CTL when your booking is confirmed.",
+                privacyLabel: "I confirm that I have read the privacy notice and consent to the processing of my data to handle this request.",
+                submit: "Continue on WhatsApp",
+                back: "Go back",
+                error: "Please complete all required fields and accept the privacy notice.",
+                finalMessage: "Thank you for contacting CTL. Your request will be reviewed."
+            },
+            fr: {
+                title: "Réservez votre transfert",
+                intro: "Saisissez vos coordonnées et les détails du trajet. Nous vous contacterons pour confirmer votre réservation.",
+                journeyTitle: "Détails du transfert",
+                typeLabel: "Type de transfert",
+                airportTransfer: "Transfert aéroport",
+                privateTransfer: "Transfert privé",
+                airportLabel: "Aéroport",
+                flightLabel: "Numéro de vol",
+                pickupLabel: "Adresse de départ",
+                destinationLabel: "Adresse de destination",
+                dateLabel: "Date du transfert",
+                timeLabel: "Heure",
+                passengersLabel: "Nombre de passagers",
+                luggageLabel: "Bagages",
+                contactTitle: "Coordonnées",
+                nameLabel: "Nom et prénom",
+                phoneLabel: "Numéro de téléphone",
+                emailLabel: "E-mail (facultatif)",
+                notesLabel: "Notes supplémentaires (facultatif)",
+                paymentTitle: "Paiement",
+                paymentNote: "Les modalités de paiement seront convenues avec CTL lors de la confirmation de la réservation.",
+                privacyLabel: "Je confirme avoir lu la politique de confidentialité et j'accepte le traitement de mes données pour gérer cette demande.",
+                submit: "Continuer sur WhatsApp",
+                back: "Retour",
+                error: "Veuillez remplir tous les champs obligatoires et accepter la politique de confidentialité.",
+                finalMessage: "Merci d'avoir contacté CTL. Votre demande sera examinée."
+            },
+            es: {
+                title: "Reserva tu traslado",
+                intro: "Introduce tus datos y los detalles del viaje. Nos pondremos en contacto contigo para confirmar la reserva.",
+                journeyTitle: "Detalles del traslado",
+                typeLabel: "Tipo de traslado",
+                airportTransfer: "Traslado al aeropuerto",
+                privateTransfer: "Traslado privado",
+                airportLabel: "Aeropuerto",
+                flightLabel: "Número de vuelo",
+                pickupLabel: "Dirección de recogida",
+                destinationLabel: "Dirección de destino",
+                dateLabel: "Fecha del traslado",
+                timeLabel: "Hora",
+                passengersLabel: "Número de pasajeros",
+                luggageLabel: "Equipaje",
+                contactTitle: "Datos de contacto",
+                nameLabel: "Nombre y apellidos",
+                phoneLabel: "Número de teléfono",
+                emailLabel: "Correo electrónico (opcional)",
+                notesLabel: "Notas adicionales (opcional)",
+                paymentTitle: "Pago",
+                paymentNote: "Las condiciones de pago se acordarán con CTL al confirmar la reserva.",
+                privacyLabel: "Confirmo que he leído la política de privacidad y doy mi consentimiento para tratar mis datos para gestionar esta solicitud.",
+                submit: "Continuar en WhatsApp",
+                back: "Volver",
+                error: "Completa todos los campos obligatorios y acepta la política de privacidad.",
+                finalMessage: "Gracias por contactar con CTL. Revisaremos tu solicitud."
+            },
+            de: {
+                title: "Transfer buchen",
+                intro: "Geben Sie Ihre Kontaktdaten und Reisedetails ein. Wir kontaktieren Sie zur Bestätigung Ihrer Buchung.",
+                journeyTitle: "Transferdetails",
+                typeLabel: "Transferart",
+                airportTransfer: "Flughafentransfer",
+                privateTransfer: "Privater Transfer",
+                airportLabel: "Flughafen",
+                flightLabel: "Flugnummer",
+                pickupLabel: "Abholadresse",
+                destinationLabel: "Zieladresse",
+                dateLabel: "Transferdatum",
+                timeLabel: "Uhrzeit",
+                passengersLabel: "Anzahl der Fahrgäste",
+                luggageLabel: "Gepäck",
+                contactTitle: "Kontaktdaten",
+                nameLabel: "Vor- und Nachname",
+                phoneLabel: "Telefonnummer",
+                emailLabel: "E-Mail (optional)",
+                notesLabel: "Zusätzliche Hinweise (optional)",
+                paymentTitle: "Zahlung",
+                paymentNote: "Die Zahlungsmodalitäten werden bei der Buchungsbestätigung mit CTL vereinbart.",
+                privacyLabel: "Ich bestätige, dass ich die Datenschutzhinweise gelesen habe und der Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage zustimme.",
+                submit: "Weiter zu WhatsApp",
+                back: "Zurück",
+                error: "Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzhinweise.",
+                finalMessage: "Vielen Dank, dass Sie CTL kontaktiert haben. Ihre Anfrage wird geprüft."
+            }
+        };
+
+        const validLanguages = ["it", "en", "fr", "es", "de"];
+        const languageSelect = document.getElementById("languageSelect");
+        const params = new URLSearchParams(window.location.search);
+
+        function getInitialLanguage() {
+            const saved = localStorage.getItem("ctl_lang");
+
+            if (validLanguages.includes(saved)) return saved;
+
+            const fromUrl = params.get("lang");
+
+            if (validLanguages.includes(fromUrl)) return fromUrl;
+
+            return "it";
         }
-    });
 
-    document.querySelectorAll("[data-i18n-aria]").forEach(element => {
-        const key = element.dataset.i18nAria;
-        element.setAttribute("aria-label", translations[lang][key]);
-    });
+        function setLanguage(lang) {
+            if (!validLanguages.includes(lang)) lang = "it";
 
-    document.querySelectorAll(".lang-switch button").forEach(button => {
-        const active = button.dataset.lang === lang;
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-pressed", String(active));
-    });
+            localStorage.setItem("ctl_lang", lang);
+            document.documentElement.lang = lang;
+            languageSelect.value = lang;
 
-    document.getElementById("privacyLabel").innerHTML =
-        translations[lang].privacy
-            .replace("PRIVACY_URL", privacyUrl)
-            .replace("TERMS_URL", termsUrl);
+            const t = translations[lang];
 
-    document.title = translations[lang].title;
-}
+            document.title = t.title + " | CTL";
 
-document.querySelectorAll(".lang-switch button").forEach(button => {
-    button.addEventListener("click", () => setLanguage(button.dataset.lang));
-});
+            const ids = {
+                pageTitle: "title",
+                intro: "intro",
+                journeyTitle: "journeyTitle",
+                typeLabel: "typeLabel",
+                airportTransferOption: "airportTransfer",
+                privateTransferOption: "privateTransfer",
+                airportLabel: "airportLabel",
+                flightLabel: "flightLabel",
+                pickupLabel: "pickupLabel",
+                destinationLabel: "destinationLabel",
+                dateLabel: "dateLabel",
+                timeLabel: "timeLabel",
+                passengersLabel: "passengersLabel",
+                luggageLabel: "luggageLabel",
+                contactTitle: "contactTitle",
+                nameLabel: "nameLabel",
+                phoneLabel: "phoneLabel",
+                emailLabel: "emailLabel",
+                notesLabel: "notesLabel",
+                paymentTitle: "paymentTitle",
+                paymentNote: "paymentNote",
+                privacyLabel: "privacyLabel",
+                submitButton: "submit",
+                backLink: "back"
+            };
 
-// Precompilazione degli indirizzi in base al tipo di transfer.
-if (tipo === "verso" && aeroporto) {
-    document.getElementById("arrivo").value = aeroporto;
-}
+            Object.entries(ids).forEach(([elementId, translationKey]) => {
+                document.getElementById(elementId).textContent = t[translationKey];
+            });
 
-if (tipo === "da" && aeroporto) {
-    document.getElementById("partenza").value = aeroporto;
-    document.getElementById("voloBox").style.display = "block";
-}
+            document.getElementById("errorMessage").textContent = "";
+            document.getElementById("errorMessage").style.display = "none";
 
-// Invio della richiesta su WhatsApp.
-document.getElementById("form").addEventListener("submit", function(e) {
-    e.preventDefault();
+            updateTransferFields();
+        }
 
-    const lang = linguaCorrente;
-    const t = translations[lang];
+        function updateTransferFields() {
+            const isAirport = document.getElementById("transferType").value === "aeroportuale";
 
-    if (!document.getElementById("privacy").checked) {
-        alert(t.privacyError);
-        return;
-    }
+            document.getElementById("airportGroup").style.display = isAirport ? "block" : "none";
+            document.getElementById("flightGroup").style.display = isAirport ? "block" : "none";
 
-    const nome = document.getElementById("nome").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const partenza = document.getElementById("partenza").value.trim();
-    const arrivo = document.getElementById("arrivo").value.trim();
-    const volo = document.getElementById("volo").value.trim();
-    const ora = document.getElementById("ora").value;
-    const data = document.getElementById("data").value;
-    const passeggeri = document.getElementById("passeggeri").value;
-    const note = document.getElementById("note").value.trim();
+            document.getElementById("airport").required = isAirport;
+            document.getElementById("flight").required = false;
 
-    if (!data) {
-        alert(t.dateError);
-        return;
-    }
+            if (!isAirport) {
+                document.getElementById("airport").value = "";
+                document.getElementById("flight").value = "";
+            }
+        }
 
-    const dataFormattata = data.split("-").reverse().join("/");
+        languageSelect.addEventListener("change", function () {
+            setLanguage(this.value);
+        });
 
-    // Il messaggio resta in italiano, come richiesto.
-    // Solo la frase finale viene tradotta.
-    const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
+        document.getElementById("transferType").addEventListener("change", updateTransferFields);
 
-Nome e cognome:
-${nome}
+        function fillFromUrl() {
+            const tipo = params.get("tipo");
+            const aeroporto = params.get("aeroporto");
 
-Numero di telefono:
-${telefono}
+            if (tipo === "aeroportuale" || tipo === "privati") {
+                document.getElementById("transferType").value = tipo;
+            }
 
-Indirizzo di partenza:
-${partenza}
+            if (aeroporto === "Brindisi" || aeroporto === "Bari") {
+                document.getElementById("airport").value = aeroporto;
+            }
 
-Indirizzo di arrivo:
-${arrivo}
+            updateTransferFields();
+        }
 
-Numero del volo:
-${volo || "Non indicato"}
+        document.getElementById("bookingForm").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-Orario:
-${ora}
+            const form = event.currentTarget;
 
-Data:
-${dataFormattata}
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
 
-Numero passeggeri:
-${passeggeri}
+            const lang = validLanguages.includes(localStorage.getItem("ctl_lang"))
+                ? localStorage.getItem("ctl_lang")
+                : "it";
 
-Note aggiuntive:
-${note || "Nessuna"}
+            const t = translations[lang];
+            const tipoValue = document.getElementById("transferType").value;
+            const tipoText = tipoValue === "aeroportuale"
+                ? "Transfer aeroportuale"
+                : "Transfer privato";
 
-Il cliente ha dichiarato di aver letto e accettato l'informativa sulla privacy e i Termini e Condizioni.
+            const nome = document.getElementById("name").value.trim();
+            const telefono = document.getElementById("phone").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const aeroporto = document.getElementById("airport").value;
+            const volo = document.getElementById("flight").value.trim();
+            const partenza = document.getElementById("pickup").value.trim();
+            const destinazione = document.getElementById("destination").value.trim();
+            const data = document.getElementById("date").value;
+            const orario = document.getElementById("time").value;
+            const passeggeri = document.getElementById("passengers").value;
+            const bagagli = document.getElementById("luggage").value;
+            const note = document.getElementById("notes").value.trim();
 
-${t.confirmation}`;
+            const lines = [
+                "Buongiorno, vorrei richiedere una prenotazione transfer.",
+                "",
+                "Tipo di transfer: " + tipoText
+            ];
 
-    const numeroWhatsApp = "393286714428";
-    const url = "https://wa.me/" + numeroWhatsApp +
-        "?text=" + encodeURIComponent(messaggio);
+            if (tipoValue === "aeroportuale") {
+                lines.push("Aeroporto: " + aeroporto);
 
-    window.open(url, "_blank");
-});
+                if (volo) lines.push("Numero del volo: " + volo);
+            }
 
-// Aggiorna la lingua quando si torna indietro o si ripristina la pagina.
-window.addEventListener("pageshow", () => setLanguage(getLanguage()));
+            lines.push(
+                "Nome e cognome: " + nome,
+                "Telefono: " + telefono,
+                "Email: " + (email || "Non indicata"),
+                "Partenza: " + partenza,
+                "Destinazione: " + destinazione,
+                "Data: " + data,
+                "Orario: " + orario,
+                "Passeggeri: " + passeggeri,
+                "Bagagli: " + bagagli,
+                "Note: " + (note || "Nessuna"),
+                "",
+                t.finalMessage
+            );
 
-// Sincronizza la scelta anche tra schede aperte dello stesso sito.
-window.addEventListener("storage", event => {
-    if (event.key === "ctl_lang") setLanguage(getLanguage());
-});
+            const message = lines.join("\n");
+            const whatsappUrl = "https://wa.me/393286714428?text=" + encodeURIComponent(message);
 
-setLanguage(getLanguage());
-</script>
+            window.location.href = whatsappUrl;
+        });
+
+        document.getElementById("date").min = new Date().toLocaleDateString("en-CA");
+
+        fillFromUrl();
+        setLanguage(getInitialLanguage());
+    </script>
 </body>
 </html>
