@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -203,6 +204,14 @@ select {
 
 <script>
 function getLanguage() {
+    // La lingua salvata ha la priorità sui parametri dell'URL.
+    const savedLanguage = localStorage.getItem("ctl_lang");
+
+    if (savedLanguage === "it" || savedLanguage === "en") {
+        return savedLanguage;
+    }
+
+    // Usa lang nell'URL soltanto se non esiste una scelta salvata.
     const params = new URLSearchParams(window.location.search);
     const requestedLanguage = params.get("lang");
 
@@ -210,7 +219,7 @@ function getLanguage() {
         return requestedLanguage;
     }
 
-    return localStorage.getItem("ctl_lang") || "it";
+    return "it";
 }
 
 function setLanguage(lang) {
@@ -248,7 +257,7 @@ document.querySelectorAll(".lang-switch button").forEach(button => {
 function continua() {
     const tipo = document.getElementById("tipo").value;
     const aeroporto = document.getElementById("aeroporto").value;
-    const lang = localStorage.getItem("ctl_lang") || "it";
+    const lang = getLanguage();
 
     if (!tipo || !aeroporto) {
         alert(lang === "en"
@@ -266,6 +275,11 @@ function continua() {
 
     window.location.href = "prenotazione.html?" + params.toString();
 }
+
+// Aggiorna la lingua anche quando si torna indietro alla pagina.
+window.addEventListener("pageshow", () => {
+    setLanguage(getLanguage());
+});
 
 setLanguage(getLanguage());
 </script>
