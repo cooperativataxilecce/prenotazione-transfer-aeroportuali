@@ -120,10 +120,21 @@
             box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.13);
         }
 
-        input:focus + label,
-        textarea:focus + label {
-            color: #d87f00;
-        }
+        /* Illuminazione del titolo quando è attivo il relativo campo */
+label:has(+ input:focus),
+label:has(+ textarea:focus) {
+    color: #d87f00;
+    transition: color 0.2s ease;
+}
+
+/* Effetto arancione sul campo attivo */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #f39c12;
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.13);
+}
 
         textarea {
             height: 120px;
