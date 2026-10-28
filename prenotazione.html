@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -41,6 +42,8 @@
                 0 0 25px rgba(243, 156, 18, 0.09);
         }
 
+        /* SELETTORE LINGUA */
+
         .lang-switch {
             display: flex;
             justify-content: flex-end;
@@ -68,6 +71,8 @@
             box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.14);
         }
 
+        /* LOGO E TITOLI */
+
         .logo {
             display: block;
             margin: 5px auto 25px;
@@ -91,12 +96,15 @@
             margin-bottom: 25px;
         }
 
+        /* CAMPI DEL MODULO */
+
         label {
             font-weight: bold;
             display: block;
             margin-top: 18px;
             margin-bottom: 6px;
-            transition: color 0.2s;
+            color: #222;
+            transition: color 0.2s ease;
         }
 
         input,
@@ -120,25 +128,26 @@
             box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.13);
         }
 
-        /* Illuminazione del titolo quando è attivo il relativo campo */
-label:has(+ input:focus),
-label:has(+ textarea:focus) {
-    color: #d87f00;
-    transition: color 0.2s ease;
-}
+        /*
+          Evidenzia il titolo del campo immediatamente successivo.
+          Funziona con nome, telefono, indirizzi, volo, ora, data,
+          passeggeri e note.
+        */
 
-/* Effetto arancione sul campo attivo */
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: #f39c12;
-    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.13);
-}
+        label:has(+ input:focus),
+        label:has(+ textarea:focus) {
+            color: #d87f00;
+        }
 
         textarea {
             height: 120px;
             resize: vertical;
+        }
+
+        /* NUMERO DEL VOLO */
+
+        #voloBox {
+            margin-top: 2px;
         }
 
         .volo-info {
@@ -147,6 +156,52 @@ select:focus {
             margin-top: 6px;
             line-height: 1.6;
         }
+
+        /* AVVISO PIÙ DI 4 PASSEGGERI */
+
+        .passengers-warning {
+            display: none;
+            margin-top: 12px;
+            padding: 15px;
+            background: #fff9f0;
+            border: 1px solid #f6e0bd;
+            border-radius: 10px;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .passengers-warning strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #b86b00;
+            font-size: 14px;
+        }
+
+        .passengers-warning p + p {
+            margin-top: 8px;
+        }
+
+        /* PAGAMENTO */
+
+        .payment-info {
+            margin-top: 25px;
+            padding: 16px;
+            background: #fff9f0;
+            border: 1px solid #f6e6ce;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .payment-info strong {
+            display: block;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        /* PRIVACY */
 
         .privacy {
             margin-top: 25px;
@@ -182,22 +237,7 @@ select:focus {
             color: #a45f00;
         }
 
-        .payment-info {
-            margin-top: 25px;
-            padding: 16px;
-            background: #fff9f0;
-            border: 1px solid #f6e6ce;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .payment-info strong {
-            display: block;
-            color: #222;
-            margin-bottom: 8px;
-        }
+        /* PULSANTE */
 
         .submit-btn {
             width: 100%;
@@ -221,9 +261,7 @@ select:focus {
             transform: scale(0.99);
         }
 
-        #voloBox {
-            margin-top: 2px;
-        }
+        /* VERSIONE MOBILE */
 
         @media (max-width: 480px) {
             body {
@@ -256,6 +294,7 @@ select:focus {
     <main class="container">
 
         <!-- SELETTORE LINGUA -->
+
         <div class="lang-switch">
             <select
                 id="languageSwitcher"
@@ -272,6 +311,7 @@ select:focus {
         </div>
 
         <!-- LOGO -->
+
         <img
             src="logo3.png"
             class="logo"
@@ -279,20 +319,24 @@ select:focus {
             data-i18n-alt="logoAlt">
 
         <!-- TITOLO -->
+
         <h2 data-i18n="title">
             Richiesta Transfer Aeroportuale
         </h2>
 
         <!-- DESCRIZIONE -->
+
         <p class="info" data-i18n="description">
             Completa i dati per richiedere il tuo transfer.
             La prenotazione sarà confermata dalla Cooperativa Taxi Lecce.
         </p>
 
         <!-- MODULO -->
+
         <form id="form">
 
             <!-- NOME -->
+
             <label for="nome" data-i18n="nameLabel">
                 Nome e cognome
             </label>
@@ -305,6 +349,7 @@ select:focus {
                 required>
 
             <!-- TELEFONO -->
+
             <label for="telefono" data-i18n="phoneLabel">
                 Numero di telefono
             </label>
@@ -317,6 +362,7 @@ select:focus {
                 required>
 
             <!-- PARTENZA -->
+
             <label for="partenza" data-i18n="pickupLabel">
                 Indirizzo di partenza
             </label>
@@ -329,6 +375,7 @@ select:focus {
                 required>
 
             <!-- ARRIVO -->
+
             <label for="arrivo" data-i18n="destinationLabel">
                 Indirizzo di arrivo
             </label>
@@ -340,6 +387,7 @@ select:focus {
                 required>
 
             <!-- NUMERO VOLO -->
+
             <div id="voloBox" style="display: none;">
 
                 <label for="volo" data-i18n="flightLabel">
@@ -361,6 +409,7 @@ select:focus {
             </div>
 
             <!-- ORARIO -->
+
             <label for="ora" data-i18n="timeLabel">
                 Orario
             </label>
@@ -372,6 +421,7 @@ select:focus {
                 required>
 
             <!-- DATA -->
+
             <label for="data" data-i18n="dateLabel">
                 Data
             </label>
@@ -383,6 +433,7 @@ select:focus {
                 required>
 
             <!-- PASSEGGERI -->
+
             <label for="passeggeri" data-i18n="passengersLabel">
                 Numero passeggeri
             </label>
@@ -395,7 +446,34 @@ select:focus {
                 step="1"
                 required>
 
+            <!-- AVVISO PER PIÙ DI 4 PASSEGGERI -->
+
+            <div
+                id="avvisoPasseggeri"
+                class="passengers-warning"
+                aria-live="polite">
+
+                <strong data-i18n="passengerWarningTitle">
+                    Attenzione: potrebbero essere necessari più taxi
+                </strong>
+
+                <p data-i18n="passengerWarningText">
+                    Ogni taxi può trasportare fino a 4 persone. Per gruppi
+                    più numerosi, saranno quindi necessari più taxi,
+                    ciascuno con una tariffa separata.
+                </p>
+
+                <p data-i18n="passengerWarningExample">
+                    Esempio: se il costo della tratta è di 20 € per taxi e
+                    vengono utilizzati due taxi, il costo totale sarà di
+                    40 €. Il totale aumenterà proporzionalmente al numero
+                    di taxi utilizzati.
+                </p>
+
+            </div>
+
             <!-- NOTE -->
+
             <label for="note" data-i18n="notesLabel">
                 Note extra (facoltativo)
             </label>
@@ -405,6 +483,7 @@ select:focus {
                 name="note"></textarea>
 
             <!-- INFORMAZIONI SUL PAGAMENTO -->
+
             <div class="payment-info">
 
                 <strong data-i18n="paymentTitle">
@@ -421,6 +500,7 @@ select:focus {
             </div>
 
             <!-- PRIVACY -->
+
             <div class="privacy">
 
                 <input
@@ -434,6 +514,7 @@ select:focus {
             </div>
 
             <!-- INVIO -->
+
             <button
                 type="submit"
                 class="submit-btn"
@@ -486,6 +567,10 @@ select:focus {
                 passengersLabel: "Numero passeggeri",
                 notesLabel: "Note extra (facoltativo)",
 
+                passengerWarningTitle: "Attenzione: potrebbero essere necessari più taxi",
+                passengerWarningText: "Ogni taxi può trasportare fino a 4 persone. Per gruppi più numerosi, saranno quindi necessari più taxi, ciascuno con una tariffa separata.",
+                passengerWarningExample: "Esempio: se il costo della tratta è di 20 € per taxi e vengono utilizzati due taxi, il costo totale sarà di 40 €. Il totale aumenterà proporzionalmente al numero di taxi utilizzati.",
+
                 paymentTitle: "Pagamento anticipato",
                 paymentText: "Per alcune prenotazioni, a discrezione della Cooperativa Taxi Lecce, può essere richiesto il pagamento anticipato tramite link SumUp. In tali casi, la prenotazione sarà confermata esclusivamente dopo la ricezione del pagamento.",
 
@@ -501,19 +586,6 @@ select:focus {
                 invalidPassengers: "Inserisci un numero di passeggeri valido.",
                 invalidDate: "La data selezionata non è valida.",
 
-                whatsappTitle: "RICHIESTA TRANSFER AEROPORTUALE",
-                whatsappName: "Nome e cognome",
-                whatsappPhone: "Numero di telefono",
-                whatsappPickup: "Indirizzo di partenza",
-                whatsappDestination: "Indirizzo di arrivo",
-                whatsappFlight: "Numero del volo",
-                whatsappFlightMissing: "Non indicato",
-                whatsappTime: "Orario",
-                whatsappDate: "Data",
-                whatsappPassengers: "Numero passeggeri",
-                whatsappNotes: "Note aggiuntive",
-                whatsappNotesMissing: "Nessuna",
-                whatsappPrivacy: "Il cliente ha dichiarato di aver letto e accettato l'informativa sulla privacy e i Termini e Condizioni.",
                 confirmation: "La richiesta è soggetta a conferma da parte della Cooperativa Taxi Lecce."
             },
 
@@ -537,6 +609,10 @@ select:focus {
                 passengersLabel: "Number of passengers",
                 notesLabel: "Additional notes (optional)",
 
+                passengerWarningTitle: "Warning: more than one taxi may be required",
+                passengerWarningText: "Each taxi can carry up to 4 people. Larger groups will therefore require multiple taxis, each with a separate fare.",
+                passengerWarningExample: "Example: if the fare is €20 per taxi and two taxis are used, the total cost will be €40. The total will increase proportionally to the number of taxis used.",
+
                 paymentTitle: "Advance payment",
                 paymentText: "For some bookings, Cooperativa Taxi Lecce may require advance payment through a SumUp link at its discretion. In these cases, the booking will only be confirmed once payment has been received.",
 
@@ -552,19 +628,6 @@ select:focus {
                 invalidPassengers: "Please enter a valid number of passengers.",
                 invalidDate: "The selected date is not valid.",
 
-                whatsappTitle: "AIRPORT TRANSFER REQUEST",
-                whatsappName: "Full name",
-                whatsappPhone: "Phone number",
-                whatsappPickup: "Pickup address",
-                whatsappDestination: "Destination address",
-                whatsappFlight: "Flight number",
-                whatsappFlightMissing: "Not provided",
-                whatsappTime: "Time",
-                whatsappDate: "Date",
-                whatsappPassengers: "Number of passengers",
-                whatsappNotes: "Additional notes",
-                whatsappNotesMissing: "None",
-                whatsappPrivacy: "The customer confirms that they have read and accepted the Privacy Policy and Terms and Conditions.",
                 confirmation: "The request is subject to confirmation by Cooperativa Taxi Lecce."
             },
 
@@ -588,6 +651,10 @@ select:focus {
                 passengersLabel: "Nombre de passagers",
                 notesLabel: "Notes supplémentaires (facultatif)",
 
+                passengerWarningTitle: "Attention : plusieurs taxis pourraient être nécessaires",
+                passengerWarningText: "Chaque taxi peut transporter jusqu'à 4 personnes. Les groupes plus nombreux devront donc utiliser plusieurs taxis, chacun avec un tarif séparé.",
+                passengerWarningExample: "Exemple : si le tarif est de 20 € par taxi et que deux taxis sont utilisés, le coût total sera de 40 €. Le montant total augmentera proportionnellement au nombre de taxis utilisés.",
+
                 paymentTitle: "Paiement anticipé",
                 paymentText: "Pour certaines réservations, Cooperativa Taxi Lecce peut, à sa discrétion, demander un paiement anticipé via un lien SumUp. Dans ce cas, la réservation sera confirmée uniquement après réception du paiement.",
 
@@ -603,19 +670,6 @@ select:focus {
                 invalidPassengers: "Veuillez saisir un nombre de passagers valide.",
                 invalidDate: "La date sélectionnée n'est pas valide.",
 
-                whatsappTitle: "DEMANDE DE TRANSFERT AÉROPORT",
-                whatsappName: "Nom et prénom",
-                whatsappPhone: "Numéro de téléphone",
-                whatsappPickup: "Adresse de départ",
-                whatsappDestination: "Adresse d'arrivée",
-                whatsappFlight: "Numéro de vol",
-                whatsappFlightMissing: "Non indiqué",
-                whatsappTime: "Heure",
-                whatsappDate: "Date",
-                whatsappPassengers: "Nombre de passagers",
-                whatsappNotes: "Notes supplémentaires",
-                whatsappNotesMissing: "Aucune",
-                whatsappPrivacy: "Le client déclare avoir lu et accepté la politique de confidentialité et les Conditions générales.",
                 confirmation: "La demande doit être confirmée par Cooperativa Taxi Lecce."
             },
 
@@ -639,6 +693,10 @@ select:focus {
                 passengersLabel: "Número de pasajeros",
                 notesLabel: "Notas adicionales (opcional)",
 
+                passengerWarningTitle: "Atención: podrían ser necesarios varios taxis",
+                passengerWarningText: "Cada taxi puede transportar hasta 4 personas. Los grupos más numerosos necesitarán varios taxis, cada uno con una tarifa independiente.",
+                passengerWarningExample: "Ejemplo: si el trayecto cuesta 20 € por taxi y se utilizan dos taxis, el coste total será de 40 €. El total aumentará proporcionalmente al número de taxis utilizados.",
+
                 paymentTitle: "Pago por adelantado",
                 paymentText: "Para algunas reservas, Cooperativa Taxi Lecce puede solicitar, a su discreción, un pago por adelantado mediante un enlace de SumUp. En estos casos, la reserva solo se confirmará una vez recibido el pago.",
 
@@ -654,19 +712,6 @@ select:focus {
                 invalidPassengers: "Introduce un número válido de pasajeros.",
                 invalidDate: "La fecha seleccionada no es válida.",
 
-                whatsappTitle: "SOLICITUD DE TRASLADO AL AEROPUERTO",
-                whatsappName: "Nombre y apellidos",
-                whatsappPhone: "Número de teléfono",
-                whatsappPickup: "Dirección de recogida",
-                whatsappDestination: "Dirección de destino",
-                whatsappFlight: "Número de vuelo",
-                whatsappFlightMissing: "No indicado",
-                whatsappTime: "Hora",
-                whatsappDate: "Fecha",
-                whatsappPassengers: "Número de pasajeros",
-                whatsappNotes: "Notas adicionales",
-                whatsappNotesMissing: "Ninguna",
-                whatsappPrivacy: "El cliente declara haber leído y aceptado la política de privacidad y los Términos y condiciones.",
                 confirmation: "La solicitud está sujeta a la confirmación de Cooperativa Taxi Lecce."
             },
 
@@ -690,12 +735,16 @@ select:focus {
                 passengersLabel: "Anzahl der Fahrgäste",
                 notesLabel: "Zusätzliche Hinweise (optional)",
 
+                passengerWarningTitle: "Achtung: Möglicherweise werden mehrere Taxis benötigt",
+                passengerWarningText: "Jedes Taxi kann bis zu 4 Personen befördern. Größere Gruppen benötigen daher mehrere Taxis, für die jeweils ein eigener Fahrpreis gilt.",
+                passengerWarningExample: "Beispiel: Kostet die Fahrt 20 € pro Taxi und werden zwei Taxis benötigt, beträgt der Gesamtpreis 40 €. Der Gesamtpreis steigt entsprechend der Anzahl der eingesetzten Taxis.",
+
                 paymentTitle: "Vorauszahlung",
                 paymentText: "Bei einigen Buchungen kann Cooperativa Taxi Lecce nach eigenem Ermessen eine Vorauszahlung über einen SumUp-Link verlangen. In diesen Fällen wird die Buchung erst nach Zahlungseingang bestätigt.",
 
-                privacyText: "Ich bestätige, dass ich die Datenschutzerklärung und die",
+                privacyText: "Ich bestätige, dass ich die",
                 privacyLink: "Datenschutzerklärung",
-                conjunction: "sowie die",
+                conjunction: "und die",
                 termsLink: "Allgemeinen Geschäftsbedingungen",
 
                 submitButton: "Über WhatsApp buchen",
@@ -705,19 +754,6 @@ select:focus {
                 invalidPassengers: "Bitte geben Sie eine gültige Anzahl von Fahrgästen ein.",
                 invalidDate: "Das ausgewählte Datum ist ungültig.",
 
-                whatsappTitle: "ANFRAGE FÜR FLUGHAFENTRANSFER",
-                whatsappName: "Vor- und Nachname",
-                whatsappPhone: "Telefonnummer",
-                whatsappPickup: "Abholadresse",
-                whatsappDestination: "Zieladresse",
-                whatsappFlight: "Flugnummer",
-                whatsappFlightMissing: "Nicht angegeben",
-                whatsappTime: "Uhrzeit",
-                whatsappDate: "Datum",
-                whatsappPassengers: "Anzahl der Fahrgäste",
-                whatsappNotes: "Zusätzliche Hinweise",
-                whatsappNotesMissing: "Keine",
-                whatsappPrivacy: "Der Kunde bestätigt, die Datenschutzerklärung und die Allgemeinen Geschäftsbedingungen gelesen und akzeptiert zu haben.",
                 confirmation: "Die Anfrage muss von Cooperativa Taxi Lecce bestätigt werden."
             }
 
@@ -725,7 +761,7 @@ select:focus {
 
 
         // =========================================
-        // INFORMATIVA PRIVACY E TERMINI
+        // LINK PRIVACY E TERMINI
         // =========================================
 
         const privacyUrl =
@@ -734,6 +770,10 @@ select:focus {
         const termsUrl =
             "https://www.cooperativataxilecce.it/pagina/termini-e-condizioni";
 
+
+        // =========================================
+        // AGGIORNAMENTO PRIVACY
+        // =========================================
 
         function aggiornaPrivacy(lang) {
             const t = traduzioni[lang];
@@ -757,21 +797,31 @@ select:focus {
                 privacyLabel.append(
                     document.createTextNode("Ich bestätige, dass ich die ")
                 );
+
                 privacyLabel.append(privacyLink);
+
                 privacyLabel.append(
                     document.createTextNode(" und die ")
                 );
+
                 privacyLabel.append(termsLink);
-                privacyLabel.append(document.createTextNode(" gelesen und akzeptiert habe."));
+
+                privacyLabel.append(
+                    document.createTextNode(" gelesen und akzeptiert habe.")
+                );
             } else {
                 privacyLabel.append(
                     document.createTextNode(t.privacyText + " ")
                 );
+
                 privacyLabel.append(privacyLink);
+
                 privacyLabel.append(
                     document.createTextNode(" " + t.conjunction + " ")
                 );
+
                 privacyLabel.append(termsLink);
+
                 privacyLabel.append(document.createTextNode("."));
             }
         }
@@ -823,6 +873,8 @@ select:focus {
             languageSwitcher.value = lang;
             languageSwitcher.setAttribute("aria-label", t.languageLabel);
 
+            // Traduzione degli elementi del modulo.
+
             document.querySelectorAll("[data-i18n]").forEach(element => {
                 const key = element.getAttribute("data-i18n");
 
@@ -831,6 +883,8 @@ select:focus {
                 }
             });
 
+            // Traduzione del testo alternativo del logo.
+
             document.querySelectorAll("[data-i18n-alt]").forEach(element => {
                 const key = element.getAttribute("data-i18n-alt");
 
@@ -838,6 +892,8 @@ select:focus {
                     element.alt = t[key];
                 }
             });
+
+            // Aggiorna i collegamenti della privacy.
 
             aggiornaPrivacy(lang);
         }
@@ -873,6 +929,28 @@ select:focus {
             document.getElementById("partenza").value = aeroporto;
             document.getElementById("voloBox").style.display = "block";
         }
+
+
+        // =========================================
+        // AVVISO PER PIÙ DI 4 PASSEGGERI
+        // =========================================
+
+        const campoPasseggeri = document.getElementById("passeggeri");
+        const avvisoPasseggeri = document.getElementById("avvisoPasseggeri");
+
+        function aggiornaAvvisoPasseggeri() {
+            const valore = campoPasseggeri.value;
+            const numero = Number(valore);
+
+            if (valore !== "" && Number.isFinite(numero) && numero > 4) {
+                avvisoPasseggeri.style.display = "block";
+            } else {
+                avvisoPasseggeri.style.display = "none";
+            }
+        }
+
+        campoPasseggeri.addEventListener("input", aggiornaAvvisoPasseggeri);
+        campoPasseggeri.addEventListener("change", aggiornaAvvisoPasseggeri);
 
 
         // =========================================
@@ -959,8 +1037,10 @@ select:focus {
 
                 const dataFormattata = data.split("-").reverse().join("/");
 
-                // Il messaggio della richiesta resta in italiano.
-                // La frase finale viene tradotta nella lingua selezionata.
+                /*
+                  Il messaggio principale WhatsApp resta in italiano.
+                  La frase finale cambia in base alla lingua selezionata.
+                */
 
                 const messaggio = `RICHIESTA TRANSFER AEROPORTUALE
 
@@ -1010,13 +1090,13 @@ ${t.confirmation}`;
 
 
         // =========================================
-        // INIZIALIZZAZIONE
+        // INIZIALIZZAZIONE DELLA PAGINA
         // =========================================
 
-        // Prima legge la lingua passata nell'URL;
+        // Legge prima la lingua passata nell'URL;
         // in alternativa utilizza quella salvata in localStorage.
-        // La scelta viene condivisa con le altre pagine CTL
-        // attraverso la chiave "ctl_lang".
+        // La lingua è condivisa con le altre pagine CTL
+        // tramite la chiave "ctl_lang".
 
         setLanguage(getLanguage());
 
